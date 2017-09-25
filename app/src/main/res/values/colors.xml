@@ -6,7 +6,9 @@
     <color name="colorAccent">#FF5252</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorCorrect">#4CAF50</color>
+    <color name="colorWrong">#FF5252</color>
     <color name="detailsIMGViewBackground">#7986CB</color>
+    <color name="colorDivider">#BDBDBD</color>
 
     <!-- Danger Value Colors -->
     <string-array name="dangerColors">

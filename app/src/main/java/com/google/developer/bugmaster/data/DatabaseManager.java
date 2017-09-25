@@ -1,48 +1,64 @@
 package com.google.developer.bugmaster.data;
 
 import android.content.Context;
-import android.database.Cursor;
+import android.os.AsyncTask;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Singleton that controls access to the SQLiteDatabase instance
  * for this application.
+ * Handling the threads with AsyncTask loader
  */
 public class DatabaseManager {
-    private static DatabaseManager sInstance;
+    Context context;
 
-    public static synchronized DatabaseManager getInstance(Context context) {
-        if (sInstance == null) {
-            sInstance = new DatabaseManager(context.getApplicationContext());
+    BugsDbHelper dbHelper;
+
+    DbLoader loader;
+
+    public DatabaseManager(Context context) {
+        this.context = context;
+
+        dbHelper = new BugsDbHelper(context);
+
+        loader = new DbLoader();
+    }
+
+    public ArrayList<Insect> loadInsects(){
+        ArrayList<Insect> result = new ArrayList<>();
+
+        loader.execute();
+
+        try {
+            result = loader.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
-        return sInstance;
+        return result;
     }
 
-    private BugsDbHelper mBugsDbHelper;
+    private class DbLoader extends AsyncTask<Void, Void, ArrayList<Insect>>{
 
-    private DatabaseManager(Context context) {
-        mBugsDbHelper = new BugsDbHelper(context);
+        ArrayList insects = new ArrayList();
+
+        @Override
+        protected ArrayList<Insect> doInBackground(Void... params) {
+            dbHelper.fillDatabase();
+
+            insects = dbHelper.getInsectsList();
+
+            return insects;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Insect> insects) {
+            super.onPostExecute(insects);
+        }
     }
 
-    /**
-     * Return a {@link Cursor} that contains every insect in the database.
-     *
-     * @param sortOrder Optional sort order string for the query, can be null
-     * @return {@link Cursor} containing all insect results.
-     */
-    public Cursor queryAllInsects(String sortOrder) {
-        //TODO: Implement the query
-        return null;
-    }
-
-    /**
-     * Return a {@link Cursor} that contains a single insect for the given unique id.
-     *
-     * @param id Unique identifier for the insect record.
-     * @return {@link Cursor} containing the insect result.
-     */
-    public Cursor queryInsectsById(int id) {
-        //TODO: Implement the query
-        return null;
-    }
 }

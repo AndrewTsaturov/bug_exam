@@ -1,26 +1,39 @@
 package com.google.developer.bugmaster.data;
 
-import android.database.Cursor;
-import android.os.Parcel;
-import android.os.Parcelable;
 
-public final class Insect implements Parcelable {
+import java.util.Comparator;
+
+public final class Insect {
+
+    //TODO create method which create bitmap for insect details imgview
+
     private static final String TAG = Insect.class.getSimpleName();
 
+    //SqLiteID
+    int id;
     //Common name
-    public final String name;
+    public String name;
     //Latin scientific name
-    public final String scientificName;
+    public String scientificName;
     //Classification order
-    public final String classification;
+    public String classification;
     //Path to image resource
-    public final String imageAsset;
+    public String imageAsset;
     //1-10 scale danger to humans
-    public final int dangerLevel;
+    int dangerLevel;
 
-    /**
-     * Create a new Insect from discrete values
-     */
+    public Insect() {
+    }
+
+    public Insect(int id, String name, String scientificName, String classification, String imageAsset, int dangerLevel) {
+        this.id = id;
+        this.name = name;
+        this.scientificName = scientificName;
+        this.classification = classification;
+        this.imageAsset = imageAsset;
+        this.dangerLevel = dangerLevel;
+    }
+
     public Insect(String name, String scientificName, String classification, String imageAsset, int dangerLevel) {
         this.name = name;
         this.scientificName = scientificName;
@@ -29,52 +42,73 @@ public final class Insect implements Parcelable {
         this.dangerLevel = dangerLevel;
     }
 
-    /**
-     * Create a new Insect from a database Cursor
-     */
-    public Insect(Cursor cursor) {
-        //TODO: Create a new insect from cursor
-        this.name = null;
-        this.scientificName = null;
-        this.classification = null;
-        this.imageAsset = null;
-        this.dangerLevel = -1;
+    public int getId() {
+        return id;
     }
 
-    /**
-     * Create a new Insect from a data Parcel
-     */
-    protected Insect(Parcel in) {
-        this.name = in.readString();
-        this.scientificName = in.readString();
-        this.classification = in.readString();
-        this.imageAsset = in.readString();
-        this.dangerLevel = in.readInt();
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(scientificName);
-        dest.writeString(classification);
-        dest.writeString(imageAsset);
-        dest.writeInt(dangerLevel);
+    public String getScientificName() {
+        return scientificName;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getClassification() {
+        return classification;
     }
 
-    public static final Creator<Insect> CREATOR = new Creator<Insect>() {
+    public String getImageAsset() {
+        return imageAsset;
+    }
+
+    public int getDangerLevel() {
+        return dangerLevel;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setScientificName(String scientificName) {
+        this.scientificName = scientificName;
+    }
+
+    public void setClassification(String classification) {
+        this.classification = classification;
+    }
+
+    public void setImageAsset(String imageAsset) {
+        this.imageAsset = imageAsset;
+    }
+
+    public void setDangerLevel(int dangerLevel) {
+        this.dangerLevel = dangerLevel;
+    }
+
+    public static class CommonNameComparator implements Comparator<Insect> {
+
         @Override
-        public Insect createFromParcel(Parcel in) {
-            return new Insect(in);
+        public int compare(Insect insectOne, Insect insectTwo) {
+            return insectOne.getName().compareTo(insectTwo.getName());
         }
+    }
+
+    public static class DangerLevelComparator implements Comparator<Insect> {
 
         @Override
-        public Insect[] newArray(int size) {
-            return new Insect[size];
+        public int compare(Insect insectOne, Insect insectTwo) {
+            if (insectOne.getDangerLevel() > insectTwo.getDangerLevel())
+                return -1;
+
+            else if (insectOne.getDangerLevel() < insectTwo.getDangerLevel())
+                return 1;
+
+            else return 0;
         }
-    };
+    }
 }

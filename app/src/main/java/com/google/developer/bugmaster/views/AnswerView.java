@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster.views;
+   package com.google.developer.bugmaster.views;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -16,20 +16,9 @@ import java.util.List;
 
 public class AnswerView extends RadioGroup implements RadioGroup.OnCheckedChangeListener {
 
-    /**
-     * Callback to report selection change events by returning
-     * whether the correct or incorrect answer was selected.
-     */
-    public interface OnAnswerSelectedListener {
-        /* Correct answer choice was selected */
-        void onCorrectAnswerSelected();
-
-        /* Incorrect answer choice was selected */
-        void onWrongAnswerSelected();
-    }
-
     private String mCorrectAnswer;
     private OnAnswerSelectedListener mSelectedListener;
+
 
     public AnswerView(Context context) {
         super(context);
@@ -66,24 +55,25 @@ public class AnswerView extends RadioGroup implements RadioGroup.OnCheckedChange
      * @param answers List of possible answer choices. Correct answer should be in this list.
      * @param correct The correct answer you want the user to discover.
      */
-//    public void loadAnswers(List<String> answers, String correct) {
-//        mCorrectAnswer = correct;
-//
-//        LayoutInflater inflater = LayoutInflater.from(getContext());
-//        removeAllViews();
-//        for (String answer : answers) {
-//            RadioButton button = (RadioButton) inflater.inflate(R.layout.quiz_item, this, false);
-//            button.setText(answer);
-//
-//            addView(button);
-//        }
-//    }
+    public void loadAnswers(List<String> answers, String correct) {
+        mCorrectAnswer = correct;
+
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        removeAllViews();
+        for (String answer : answers) {
+            RadioButton button = (RadioButton) inflater.inflate(R.layout.quiz_item, this, false);
+            button.setText(answer);
+
+            addView(button);
+        }
+    }
 
     /**
      * Returns whether the current selection matches the correct answer.
      */
     public boolean isCorrectAnswerSelected() {
         int checkedId = getCheckedRadioButtonId();
+
         RadioButton selected = (RadioButton) findViewById(checkedId);
 
         return (selected != null) && TextUtils.equals(selected.getText(), mCorrectAnswer);
@@ -104,19 +94,24 @@ public class AnswerView extends RadioGroup implements RadioGroup.OnCheckedChange
      */
     public void setCheckedIndex(int index) {
         View child = getChildAt(index);
-        if (child != null && child instanceof Checkable) {
-            check(child.getId());
-        }
+
+        if (child != null && child instanceof Checkable) check(child.getId());
     }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         if (mSelectedListener != null) {
-            if (isCorrectAnswerSelected()) {
-                mSelectedListener.onCorrectAnswerSelected();
-            } else {
-                mSelectedListener.onWrongAnswerSelected();
-            }
+            if (isCorrectAnswerSelected()) mSelectedListener.onCorrectAnswerSelected();
+
+            else mSelectedListener.onWrongAnswerSelected();
         }
+    }
+
+    public interface OnAnswerSelectedListener {
+        /* Correct answer choice was selected */
+        void onCorrectAnswerSelected();
+
+        /* Incorrect answer choice was selected */
+        void onWrongAnswerSelected();
     }
 }
