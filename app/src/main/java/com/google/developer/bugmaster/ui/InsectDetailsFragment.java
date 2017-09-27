@@ -4,6 +4,7 @@ package com.google.developer.bugmaster.ui;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,6 +35,8 @@ public class InsectDetailsFragment extends Fragment{
     @BindView(R.id.details_txt_scient_name) TextView scientNammeTxtView;
     @BindView(R.id.details_txt_classification) TextView classificationTextView;
     @BindView(R.id.details_danger_level) ProgressBar dangerRatingView;
+
+    ActionBar actionBar;
 
     private Unbinder unbinder;
 
@@ -82,7 +85,7 @@ public class InsectDetailsFragment extends Fragment{
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -103,6 +106,11 @@ public class InsectDetailsFragment extends Fragment{
         ImageLoader loader = new ImageLoader(getActivity());
 
         insectImage.setImageBitmap(loader.loadImage(insect.getImageAsset()));
+
     }
 
+
+    public void setActionBar(ActionBar actionBar) {
+        this.actionBar = actionBar;
+    }
 }

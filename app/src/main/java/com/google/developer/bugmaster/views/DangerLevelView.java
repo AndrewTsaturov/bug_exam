@@ -1,6 +1,7 @@
 package com.google.developer.bugmaster.views;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -118,7 +119,7 @@ public class DangerLevelView extends TextView {
     }
 
     public void setDangerLevel(int dangerLevel, Context context) {
-        setText(dangerLevel);
+        setText(String.valueOf(dangerLevel));
 
         setBackgroundColor(getDangerLevelColor(dangerLevel, context));
 
@@ -132,49 +133,58 @@ public class DangerLevelView extends TextView {
     public int getDangerLevelColor(int dangerLevel, Context context) {
         int result;
 
-        String[] colorValuesArray = context.getResources().getStringArray(R.array.dangerColors);
+        int [] colorValuesArray = getColorArrayFromStringResourses();
 
         switch (dangerLevel) {
             case 1:
-                result = getColorValueFromArrayItem(colorValuesArray[0]);
+                result = colorValuesArray[0];
                 break;
             case 2:
-                result = getColorValueFromArrayItem(colorValuesArray[1]);
+                result = colorValuesArray[1];
                 break;
             case 3:
-                result = getColorValueFromArrayItem(colorValuesArray[2]);
+                result = colorValuesArray[2];
                 break;
             case 4:
-                result = getColorValueFromArrayItem(colorValuesArray[3]);
+                result = colorValuesArray[3];
                 break;
             case 5:
-                result = getColorValueFromArrayItem(colorValuesArray[4]);
+                result = colorValuesArray[4];
                 break;
             case 6:
-                result = getColorValueFromArrayItem(colorValuesArray[5]);
+                result = colorValuesArray[5];
                 break;
             case 7:
-                result = getColorValueFromArrayItem(colorValuesArray[6]);
+                result = colorValuesArray[6];
                 break;
             case 8:
-                result = getColorValueFromArrayItem(colorValuesArray[7]);
+                result = colorValuesArray[7];
                 break;
             case 9:
-                result = getColorValueFromArrayItem(colorValuesArray[8]);
+                result = colorValuesArray[8];
                 break;
             case 10:
-                result = getColorValueFromArrayItem(colorValuesArray[9]);
+                result = colorValuesArray[9];
                 break;
             default:
-                result = getColorValueFromArrayItem(colorValuesArray[0]);
+                result = colorValuesArray[0];
                 break;
 
         }
         return result;
     }
 
-    private int getColorValueFromArrayItem(String arrayItem) {
-        int result = Integer.parseInt(arrayItem);
+    private int[] getColorArrayFromStringResourses() {
+        TypedArray bufferArray = getContext().getResources().obtainTypedArray(R.array.dangerColors);
+
+        int[] result = new int[bufferArray.length()];
+
+        for(int i = 0; i < bufferArray.length(); i++){
+            result[i] = bufferArray.getColor(i, 0);
+        }
+
+        bufferArray.recycle();
+
         return result;
     }
 

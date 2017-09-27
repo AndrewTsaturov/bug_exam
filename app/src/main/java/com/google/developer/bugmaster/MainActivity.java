@@ -1,9 +1,11 @@
 package com.google.developer.bugmaster;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 
 import com.google.developer.bugmaster.data.DatabaseManager;
@@ -21,6 +23,9 @@ import java.util.Comparator;
 
 import butterknife.ButterKnife;
 
+//TODO: onBackPressed override
+//TODO: не уверен правлиьно ли работает компоратор, код еще будет причесан но весь функционал должен работать
+
 public class MainActivity extends AppCompatActivity implements FragmentInterface {
 
 
@@ -31,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
     private InsectDetailsFragment detailsScreen;
     private InsectListFragment mainScreen;
     private QuizFragment quizScreen;
-    private SettingsFragment setteingsSreen;
+    private SettingsFragment settingsScreen;
 
     private byte MAIN_SCREEN_ID = 1;
     private byte DETAILS_SCREEN_ID = 2;
@@ -50,7 +55,13 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
         loadData();
 
         initUI();
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home) listScreenLaunch();
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -66,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
     @Override
     public void detailsScreenLaunch(int position) {
         detailsScreen = new InsectDetailsFragment();
+        detailsScreen.setActionBar(getSupportActionBar());
         detailsScreen.setInsect(insectsList.get(position));
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -77,8 +89,12 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
     @Override
     public void settingsScreenLaunch() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        settingsScreen.setActionBar(getSupportActionBar());
+
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_layout, setteingsSreen);
+        fragmentTransaction.replace(R.id.fragment_layout, settingsScreen);
         fragmentTransaction.commit();
 
         setScreenId(SETTINGS_SCREEN_ID);
@@ -89,17 +105,25 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
         question = new Question();
         question.createQuestion(insectsList, question.getRandomIndex(insectsList.size()));
 
+
         quizScreen = new QuizFragment();
+        quizScreen.setActionBar(getSupportActionBar());
         quizScreen.setQuestion(question);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_layout, quizScreen);
         fragmentTransaction.commit();
+
+        setScreenId(QUIZ_SCREEN_ID);
     }
 
     @Override
     public void listScreenLaunch() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
+
         mainScreen = new InsectListFragment();
+        mainScreen.setActionBar(getSupportActionBar());
         mainScreen.setListOfInsects(insectsList);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -115,7 +139,10 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
         mainScreen = new InsectListFragment();
         detailsScreen = new InsectDetailsFragment();
         quizScreen = new QuizFragment();
-        setteingsSreen = new SettingsFragment();
+        settingsScreen = new SettingsFragment();
+
+        Intent intent = getIntent();
+        screenId = intent.getByteExtra(INTENT_QUIZ_SCREEN_LAUNCH_KEY, MAIN_SCREEN_ID);
 
         chooseScreenToAttach();
     }
@@ -126,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
         insectsList = manager.loadInsects();
     }
+
 
     private void chooseScreenToAttach(){
         switch (screenId){

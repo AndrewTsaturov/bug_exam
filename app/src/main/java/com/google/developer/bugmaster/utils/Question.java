@@ -1,6 +1,7 @@
 package com.google.developer.bugmaster.utils;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.developer.bugmaster.data.Insect;
 
@@ -56,13 +57,12 @@ public class Question {
         else return false;
     }
 
-    public Question createQuestion(ArrayList<Insect> insectList, int index){
+    public void createQuestion(ArrayList<Insect> insectList, int index){
 
-        Question createdQestion = new Question();
-        createdQestion.setQuestionSubject(insectList.get(index).getName());
-        createdQestion.setCorrectAnswer(insectList.get(index).getScientificName());
-        createdQestion.setAnswerOptions(fillAnswerOptions(insectList.get(index).getScientificName(), insectList));
-        return createdQestion;
+        setQuestionSubject(insectList.get(index).getName());
+        setCorrectAnswer(insectList.get(index).getScientificName());
+        setAnswerOptions(fillAnswerOptions(insectList.get(index).getScientificName(), insectList));
+        Log.d("ответы", "" + getAnswerOptions().size());
     }
 
     private List<String> fillAnswerOptions(String correctAnswer, ArrayList<Insect> insectList){
@@ -71,7 +71,7 @@ public class Question {
         result.add(correctAnswer);
 
         for (int i = 1; i < ANSWER_OPTIONS_COUNT; i++){
-            String optionBuffer = result.get(i - 0);
+            String optionBuffer = result.get(i - 1);
 
             while (optionBuffer.equals(result.get(i - 1)))
                 optionBuffer = prepareFakeOption(insectList, correctAnswer);
@@ -80,6 +80,7 @@ public class Question {
         }
 
         Collections.shuffle(result);
+
         return  result;
     }
 

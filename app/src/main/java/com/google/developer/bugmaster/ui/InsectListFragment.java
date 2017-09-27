@@ -1,13 +1,12 @@
 package com.google.developer.bugmaster.ui;
 
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,6 +43,8 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
     @BindView(R.id.list_fab) FloatingActionButton quizLaunchFab;
 
+    ActionBar actionBar;
+
     int position;
 
     public ArrayList<Insect> getListOfInsects() {
@@ -52,6 +53,10 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
     public void setListOfInsects(ArrayList<Insect> listOfInsects) {
         this.listOfInsects = listOfInsects;
+    }
+
+    public void setActionBar(ActionBar actionBar) {
+        this.actionBar = actionBar;
     }
 
     public void setFragmentInterface(MainActivity mainActivity){
@@ -91,6 +96,7 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        actionBar.setDisplayHomeAsUpEnabled(false);
         inflater.inflate(R.menu.menu_main, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -100,6 +106,7 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
         switch (item.getItemId()){
             case R.id.action_sort:
                 fragmentInterface.sortInsectList();
+                break;
             case R.id.action_settings:
                 fragmentInterface.settingsScreenLaunch();
                 break;

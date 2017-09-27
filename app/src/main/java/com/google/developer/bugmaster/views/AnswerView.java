@@ -3,6 +3,7 @@
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.google.developer.bugmaster.R;
+import com.google.developer.bugmaster.ui.QuizFragment;
 
 import java.util.List;
 
@@ -47,6 +49,10 @@ public class AnswerView extends RadioGroup implements RadioGroup.OnCheckedChange
         mSelectedListener = listener;
     }
 
+    public void setOnAnswerSelectedListener(QuizFragment fragment) {
+        mSelectedListener = fragment;
+    }
+
     /**
      * Set up the choices view with new data. Each option is given a
      * {@link RadioButton} to select. The correct answer is saved and
@@ -60,9 +66,12 @@ public class AnswerView extends RadioGroup implements RadioGroup.OnCheckedChange
 
         LayoutInflater inflater = LayoutInflater.from(getContext());
         removeAllViews();
-        for (String answer : answers) {
+
+        Log.d("жопа", "" + answers.size());
+
+        for (int i = 0; i < answers.size(); i++) {
             RadioButton button = (RadioButton) inflater.inflate(R.layout.quiz_item, this, false);
-            button.setText(answer);
+            button.setText(answers.get(i));
 
             addView(button);
         }

@@ -11,7 +11,7 @@
     <color name="colorDivider">#BDBDBD</color>
 
     <!-- Danger Value Colors -->
-    <string-array name="dangerColors">
+    <array name="dangerColors">
         <!-- level=1 -->
         <item>#311b92</item>
         <!-- level=2 -->
@@ -32,5 +32,5 @@
         <item>#e65100</item>
         <!-- level=10 -->
         <item>#bf360c</item>
-    </string-array>
+    </array>
 </resources>

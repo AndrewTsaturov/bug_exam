@@ -11,10 +11,13 @@ import android.util.Log;
 
 import com.google.developer.bugmaster.MainActivity;
 import com.google.developer.bugmaster.R;
+import com.google.developer.bugmaster.ui.FragmentInterface;
 
 public class ReminderService extends IntentService {
 
     private static final String TAG = ReminderService.class.getSimpleName();
+
+    private byte QUIZ_SCREEN_ID = 3;
 
     private static final int NOTIFICATION_ID = 42;
 
@@ -32,7 +35,6 @@ public class ReminderService extends IntentService {
 
         //Create action intent
         Intent action = new Intent(this, MainActivity.class);
-        //TODO: Add data elements to quiz launch
 
         PendingIntent operation =
                 PendingIntent.getActivity(this, 0, action, PendingIntent.FLAG_CANCEL_CURRENT);
@@ -45,6 +47,7 @@ public class ReminderService extends IntentService {
                 .setAutoCancel(true)
                 .build();
 
+        action.putExtra(FragmentInterface.INTENT_QUIZ_SCREEN_LAUNCH_KEY, QUIZ_SCREEN_ID);
         manager.notify(NOTIFICATION_ID, note);
 
     }

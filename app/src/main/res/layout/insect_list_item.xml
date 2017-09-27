@@ -32,15 +32,13 @@
                 android:id="@+id/item_txt_common_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceLarge"
-                />
+                android:textAppearance="?android:textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/item_txt_scient_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceMedium"
-                />
+                android:textAppearance="?android:textAppearanceMedium" />
 
         </LinearLayout>
     </LinearLayout>

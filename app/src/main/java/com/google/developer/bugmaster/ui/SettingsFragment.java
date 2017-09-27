@@ -1,6 +1,7 @@
 package com.google.developer.bugmaster.ui;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,16 +18,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     FragmentInterface fragmentInterface;
 
+    ActionBar actionBar;
+
+    public void setActionBar(ActionBar actionBar) {
+        this.actionBar = actionBar;
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setFragmentInterface((MainActivity) getActivity());
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -51,4 +52,5 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void setFragmentInterface(MainActivity mainActivity){
         fragmentInterface = mainActivity;
     }
+
 }

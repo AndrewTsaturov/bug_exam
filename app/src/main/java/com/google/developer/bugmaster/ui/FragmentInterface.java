@@ -10,4 +10,6 @@ public interface FragmentInterface {
     void settingsScreenLaunch();
     void quizScreenLaunch();
     void listScreenLaunch();
+
+    String INTENT_QUIZ_SCREEN_LAUNCH_KEY = "screenID_key";
 }

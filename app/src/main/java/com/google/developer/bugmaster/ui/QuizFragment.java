@@ -3,6 +3,7 @@ package com.google.developer.bugmaster.ui;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,12 +31,17 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
     @BindView(R.id.quiz_answer_select) AnswerView answerView;
     @BindView(R.id.quiz_text_correct) TextView answerCorrectTextView;
 
+    ActionBar actionBar;
+
     Unbinder unbinder;
 
     Question question;
 
     FragmentInterface fragmentInterface;
 
+    public void setActionBar(ActionBar actionBar) {
+        this.actionBar = actionBar;
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -69,7 +75,7 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -97,7 +103,9 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
     public void setupView(){
         questionTextView.setText(getString(R.string.question_text) + question.getQuestionSubject());
 
+        answerView.setOnAnswerSelectedListener(this);
         answerView.loadAnswers(question.getAnswerOptions(), question.getCorrectAnswer());
+
     }
 
     private void setFragmentInterface(MainActivity mainActivity){

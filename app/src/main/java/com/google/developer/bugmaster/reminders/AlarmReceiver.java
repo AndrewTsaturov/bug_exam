@@ -9,7 +9,9 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.google.developer.bugmaster.MainActivity;
 import com.google.developer.bugmaster.R;
+import com.google.developer.bugmaster.ui.FragmentInterface;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,6 +20,7 @@ import java.util.Locale;
 
 public class AlarmReceiver extends BroadcastReceiver {
     private static final String TAG = AlarmReceiver.class.getSimpleName();
+
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -42,6 +45,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         PendingIntent operation = PendingIntent
                 .getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        Intent activityIntent = new Intent(context, MainActivity.class);
+
         if (enabled) {
             //Gather the time preference
             Calendar startTime = Calendar.getInstance();
@@ -61,6 +66,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             }
 
             Log.d(TAG, "Scheduling quiz reminder alarm");
+
             manager.setExact(AlarmManager.RTC, startTime.getTimeInMillis(), operation);
         } else {
             Log.d(TAG, "Disabling quiz reminder alarm");
