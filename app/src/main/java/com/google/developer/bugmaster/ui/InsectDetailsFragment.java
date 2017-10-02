@@ -32,7 +32,7 @@ public class InsectDetailsFragment extends Fragment{
 
     @BindView(R.id.details_img_view) ImageView insectImage;
     @BindView(R.id.details_txt_common_name) TextView commonNameTxtView;
-    @BindView(R.id.details_txt_scient_name) TextView scientNammeTxtView;
+    @BindView(R.id.details_txt_scient_name) TextView scientNameTxtView;
     @BindView(R.id.details_txt_classification) TextView classificationTextView;
     @BindView(R.id.details_danger_level) ProgressBar dangerRatingView;
 
@@ -44,14 +44,7 @@ public class InsectDetailsFragment extends Fragment{
 
     Insect insect;
 
-
-    public void setInsect(Insect insect) {
-        this.insect = insect;
-    }
-
-    private void setFragmentInterface(MainActivity mainActivity){
-        fragmentInterface = mainActivity;
-    }
+    //native Fragment callbacks
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -83,6 +76,8 @@ public class InsectDetailsFragment extends Fragment{
         unbinder.unbind();
     }
 
+    //Menu callbacks
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -96,9 +91,11 @@ public class InsectDetailsFragment extends Fragment{
         return super.onOptionsItemSelected(item);
     }
 
+    // setup views
+
     private void setupView(){
          commonNameTxtView.setText(insect.getName());
-         scientNammeTxtView.setText(insect.getScientificName());
+         scientNameTxtView.setText(insect.getScientificName());
          classificationTextView.setText(getString(R.string.classification) + insect.getClassification());
 
          dangerRatingView.setProgress(insect.getDangerLevel());
@@ -109,6 +106,15 @@ public class InsectDetailsFragment extends Fragment{
 
     }
 
+    //setters
+
+    public void setInsect(Insect insect) {
+        this.insect = insect;
+    }
+
+    private void setFragmentInterface(MainActivity mainActivity){
+        fragmentInterface = mainActivity;
+    }
 
     public void setActionBar(ActionBar actionBar) {
         this.actionBar = actionBar;

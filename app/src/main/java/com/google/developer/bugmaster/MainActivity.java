@@ -23,7 +23,6 @@ import java.util.Comparator;
 
 import butterknife.ButterKnife;
 
-//TODO: onBackPressed override
 //TODO: не уверен правлиьно ли работает компоратор, код еще будет причесан но весь функционал должен работать
 
 public class MainActivity extends AppCompatActivity implements FragmentInterface {
@@ -47,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
     private Question question;
 
+    //overriding native activity callbacks
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +65,14 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        if(screenId == MAIN_SCREEN_ID) super.onBackPressed();
+
+        else listScreenLaunch();
+    }
+
+    //Implementing FragmentInterface class
     @Override
     public void sortInsectList() {
         Comparator<Insect> comparator = new Insect.CommonNameComparator().
@@ -132,6 +141,8 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
         setScreenId(MAIN_SCREEN_ID);
     }
+
+    //private Activity Methods
 
     private void initUI(){
         ButterKnife.bind(this);

@@ -47,21 +47,7 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
     int position;
 
-    public ArrayList<Insect> getListOfInsects() {
-        return listOfInsects;
-    }
-
-    public void setListOfInsects(ArrayList<Insect> listOfInsects) {
-        this.listOfInsects = listOfInsects;
-    }
-
-    public void setActionBar(ActionBar actionBar) {
-        this.actionBar = actionBar;
-    }
-
-    public void setFragmentInterface(MainActivity mainActivity){
-        fragmentInterface = mainActivity;
-    }
+    //native Fragment callbacks -->
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -93,10 +79,12 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
         unbinder.unbind();
     }
 
+    //menu callbacks -->
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         actionBar.setDisplayHomeAsUpEnabled(false);
+
         inflater.inflate(R.menu.menu_main, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -115,11 +103,15 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
         return super.onOptionsItemSelected(item);
     }
 
+    //onIsectClick override -->
+
     @Override
     public void onInsectClick(int position) {
         fragmentInterface.detailsScreenLaunch(position);
         this.position = position;
     }
+
+    //Setup views -->
 
     private void setupView(){
         recyclerAdapter = new InsectRecyclerAdapter(listOfInsects, getContext());
@@ -131,6 +123,22 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
         quizLaunchFab.setOnClickListener(v -> fragmentInterface.quizScreenLaunch());
     }
+
+    // public setters -->
+
+    public void setListOfInsects(ArrayList<Insect> listOfInsects) {
+        this.listOfInsects = listOfInsects;
+    }
+
+    public void setActionBar(ActionBar actionBar) {
+        this.actionBar = actionBar;
+    }
+
+    public void setFragmentInterface(MainActivity mainActivity){
+        fragmentInterface = mainActivity;
+    }
+
+    //insect list position getter
 
     public int getPosition() {
         return position;

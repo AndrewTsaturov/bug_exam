@@ -87,6 +87,7 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
         return super.onOptionsItemSelected(item);
     }
 
+    //AnswerView interface implement
 
     @Override
     public void onCorrectAnswerSelected() {

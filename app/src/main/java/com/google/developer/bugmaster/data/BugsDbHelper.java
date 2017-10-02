@@ -130,6 +130,7 @@ public class BugsDbHelper extends SQLiteOpenHelper {
             result.setImageAsset(object.getString(JSON_KEY_IMAGE_ASSET));
             result.setDangerLevel(object.getInt(JSON_KEY_DANGER_LEVEL));
         } catch (JSONException e) {
+            e.printStackTrace();
         }
 
         return result;

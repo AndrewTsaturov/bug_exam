@@ -20,10 +20,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     ActionBar actionBar;
 
-    public void setActionBar(ActionBar actionBar) {
-        this.actionBar = actionBar;
-    }
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -49,8 +45,13 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         return super.onOptionsItemSelected(item);
     }
 
+    //Setter
+
     public void setFragmentInterface(MainActivity mainActivity){
         fragmentInterface = mainActivity;
     }
 
+    public void setActionBar(ActionBar actionBar) {
+        this.actionBar = actionBar;
+    }
 }
