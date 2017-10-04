@@ -1,7 +1,5 @@
 package com.google.developer.bugmaster.utils;
 
-import android.content.Context;
-import android.util.Log;
 
 import com.google.developer.bugmaster.data.Insect;
 
@@ -58,11 +56,11 @@ public class Question {
     }
 
     public void createQuestion(ArrayList<Insect> insectList, int index){
-
         setQuestionSubject(insectList.get(index).getName());
+
         setCorrectAnswer(insectList.get(index).getScientificName());
+
         setAnswerOptions(fillAnswerOptions(insectList.get(index).getScientificName(), insectList));
-        Log.d("ответы", "" + getAnswerOptions().size());
     }
 
     private List<String> fillAnswerOptions(String correctAnswer, ArrayList<Insect> insectList){

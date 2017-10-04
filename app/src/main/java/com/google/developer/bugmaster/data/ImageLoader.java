@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutionException;
 
 public class ImageLoader {
 
-    Activity activity;
+    private Activity activity;
 
     public ImageLoader(Activity activity) {
         this.activity = activity;
@@ -43,7 +43,7 @@ public class ImageLoader {
 
         String imageAsset;
 
-        public AsyncLoader(String imageAsset) {
+        private AsyncLoader(String imageAsset) {
             this.imageAsset = imageAsset;
         }
 

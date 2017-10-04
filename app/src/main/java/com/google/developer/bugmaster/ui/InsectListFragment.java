@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.developer.bugmaster.AppBugMaster;
 import com.google.developer.bugmaster.MainActivity;
 import com.google.developer.bugmaster.R;
 import com.google.developer.bugmaster.data.Insect;
@@ -45,7 +46,7 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
     ActionBar actionBar;
 
-    int position;
+
 
     //native Fragment callbacks -->
 
@@ -58,6 +59,9 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setRetainInstance(true);
+
         setHasOptionsMenu(true);
     }
 
@@ -107,8 +111,9 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
     @Override
     public void onInsectClick(int position) {
+        AppBugMaster.insectListChoosenPosition = position;
+
         fragmentInterface.detailsScreenLaunch(position);
-        this.position = position;
     }
 
     //Setup views -->
@@ -140,7 +145,6 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
     //insect list position getter
 
-    public int getPosition() {
-        return position;
-    }
+
+
 }

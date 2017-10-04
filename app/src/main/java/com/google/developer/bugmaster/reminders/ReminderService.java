@@ -47,7 +47,8 @@ public class ReminderService extends IntentService {
                 .setAutoCancel(true)
                 .build();
 
-        action.putExtra(FragmentInterface.INTENT_QUIZ_SCREEN_LAUNCH_KEY, QUIZ_SCREEN_ID);
+        action.putExtra(FragmentInterface.INTENT_QUIZ_SCREEN_LAUNCH, true);
+
         manager.notify(NOTIFICATION_ID, note);
 
     }

@@ -55,6 +55,9 @@ public class InsectDetailsFragment extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setRetainInstance(true);
+
         setHasOptionsMenu(true);
     }
 
@@ -96,7 +99,7 @@ public class InsectDetailsFragment extends Fragment{
     private void setupView(){
          commonNameTxtView.setText(insect.getName());
          scientNameTxtView.setText(insect.getScientificName());
-         classificationTextView.setText(getString(R.string.classification) + insect.getClassification());
+         classificationTextView.setText(getString(R.string.classification) + " " + insect.getClassification());
 
          dangerRatingView.setProgress(insect.getDangerLevel());
 

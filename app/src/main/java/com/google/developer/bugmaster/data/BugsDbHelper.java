@@ -146,6 +146,7 @@ public class BugsDbHelper extends SQLiteOpenHelper {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return result;
     }
 
