@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
     boolean checkQuizLaunch;
 
+    boolean sortFlag;
+
     //overriding native activity callbacks
 
     @Override
@@ -63,7 +65,15 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
     @Override
     public void sortInsectList() {
         AppBugMaster ap = ((AppBugMaster) getApplicationContext());
-        ap.sortInsectList();
+
+        if(!sortFlag) {
+            ap.sortInsectList(false);
+            setSortFlag(true);
+        }
+        else {
+            ap.sortInsectList(true);
+            setSortFlag(false);
+        }
 
         listScreenLaunch();
     }
@@ -160,6 +170,10 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
     public static void setScreenId(byte screenId) {
         MainActivity.screenId = screenId;
+    }
+
+    public void setSortFlag(boolean sortFlag) {
+        this.sortFlag = sortFlag;
     }
 
     private void getIntentMessageFromReminder(){

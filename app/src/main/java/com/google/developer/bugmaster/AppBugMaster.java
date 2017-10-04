@@ -31,11 +31,11 @@ public class AppBugMaster extends Application {
 
     }
 
-    public void sortInsectList(){
-        Comparator<Insect> comparator = new Insect.CommonNameComparator().
-                thenComparing(new Insect.DangerLevelComparator());
-
-        Collections.sort(insectsList, comparator);
+    public void sortInsectList(boolean sortFlag){
+        if(sortFlag)
+            Collections.sort(insectsList, new Insect.DangerLevelComparator());
+        else
+            Collections.sort(insectsList, new Insect.CommonNameComparator());
     }
 
     public Question prepareQuestionForQuizFragment(){
