@@ -14,12 +14,12 @@ import android.widget.TextView;
 
 import com.google.developer.bugmaster.R;
 
-//TODO: This class should be used in the insect list to display danger level
+//--> This class should be used in the insect list to display danger level
 public class DangerLevelView extends TextView {
 
     private Paint circlePaint;
 
-    private int width, heigth;
+    private int width, height;
 
     private boolean landOrientation;
 
@@ -48,7 +48,7 @@ public class DangerLevelView extends TextView {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         width = getMeasuredWidth();
-        heigth = getMeasuredHeight();
+        height = getMeasuredHeight();
 
         landOrientation = checkLandscapeOrientation();
     }
@@ -86,7 +86,7 @@ public class DangerLevelView extends TextView {
     }
 
     private boolean checkLandscapeOrientation() {
-        if (width > heigth) return true;
+        if (width > height) return true;
         else return false;
     }
 
@@ -94,24 +94,24 @@ public class DangerLevelView extends TextView {
         Path path = new Path();
         path.reset();
         if (!orientation) {
-            RectF oval = new RectF(0, heigth - (heigth / 2 + width / 2), width, (heigth / 2 + width / 2));
+            RectF oval = new RectF(0, height - (height / 2 + width / 2), width, (height / 2 + width / 2));
             path.moveTo(0, 0);
-            path.lineTo(0, heigth);
-            path.lineTo(width, heigth);
-            path.lineTo(width, heigth / 2);
+            path.lineTo(0, height);
+            path.lineTo(width, height);
+            path.lineTo(width, height / 2);
             path.addOval(oval, Path.Direction.CW);
             path.lineTo(width, 0);
             path.lineTo(0, 0);
 
         } else {
-            RectF oval = new RectF(width - (width / 2 + heigth / 2), 0, (width / 2 + heigth / 2), heigth);
+            RectF oval = new RectF(width - (width / 2 + height / 2), 0, (width / 2 + height / 2), height);
             path.moveTo(0, 0);
-            path.lineTo(0, heigth);
-            path.lineTo(width, heigth);
-            path.lineTo(width, heigth / 2);
-            path.lineTo(width / 2 + heigth / 2, heigth / 2);
+            path.lineTo(0, height);
+            path.lineTo(width, height);
+            path.lineTo(width, height / 2);
+            path.lineTo(width / 2 + height / 2, height / 2);
             path.addOval(oval, Path.Direction.CW);
-            path.lineTo(width, heigth / 2);
+            path.lineTo(width, height / 2);
             path.lineTo(width, 0);
             path.lineTo(0, 0);
         }
@@ -133,7 +133,7 @@ public class DangerLevelView extends TextView {
     public int getDangerLevelColor(int dangerLevel, Context context) {
         int result;
 
-        int [] colorValuesArray = getColorArrayFromStringResourses();
+        int [] colorValuesArray = getColorArrayFromStringRes();
 
         switch (dangerLevel) {
             case 1:
@@ -174,7 +174,8 @@ public class DangerLevelView extends TextView {
         return result;
     }
 
-    private int[] getColorArrayFromStringResourses() {
+    private int[] getColorArrayFromStringRes() {
+
         TypedArray bufferArray = getContext().getResources().obtainTypedArray(R.array.dangerColors);
 
         int[] result = new int[bufferArray.length()];

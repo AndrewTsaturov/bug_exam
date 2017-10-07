@@ -45,12 +45,12 @@ public class AlarmReceiver extends BroadcastReceiver {
         PendingIntent operation = PendingIntent
                 .getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        Intent activityIntent = new Intent(context, MainActivity.class);
 
         if (enabled) {
             //Gather the time preference
             Calendar startTime = Calendar.getInstance();
             try {
+                //FIXME--> test Alarm
                 String alarmPref = preferences.getString(keyAlarm, "12:00");
                 SimpleDateFormat format = new SimpleDateFormat("HH:mm", Locale.getDefault());
                 startTime.setTime(format.parse(alarmPref));

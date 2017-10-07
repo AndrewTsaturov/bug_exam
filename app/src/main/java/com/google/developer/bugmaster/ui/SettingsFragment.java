@@ -16,42 +16,13 @@ import com.google.developer.bugmaster.R;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-    FragmentInterface fragmentInterface;
-
-    ActionBar actionBar;
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setFragmentInterface((MainActivity) getActivity());
     }
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) fragmentInterface.listScreenLaunch();
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    //Setter
-
-    public void setFragmentInterface(MainActivity mainActivity){
-        fragmentInterface = mainActivity;
-    }
-
-    public void setActionBar(ActionBar actionBar) {
-        this.actionBar = actionBar;
     }
 }

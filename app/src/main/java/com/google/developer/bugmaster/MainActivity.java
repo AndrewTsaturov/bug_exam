@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.view.MenuItem;
 
-
 import com.google.developer.bugmaster.ui.FragmentInterface;
 import com.google.developer.bugmaster.ui.InsectDetailsFragment;
 import com.google.developer.bugmaster.ui.InsectListFragment;
@@ -17,12 +16,9 @@ import com.google.developer.bugmaster.utils.Question;
 
 
 
-
 public class MainActivity extends AppCompatActivity implements FragmentInterface {
 
-
     private FragmentTransaction fragmentTransaction;
-
     private InsectDetailsFragment insectDetailsFragment;
     private InsectListFragment insectListFragment;
     private QuizFragment quizFragment;
@@ -82,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
     public void detailsScreenLaunch(int position) {
         insectDetailsFragment = new InsectDetailsFragment();
         insectDetailsFragment.setInsect(AppBugMaster.insectsList.get(position));
-        insectDetailsFragment.setActionBar(getSupportActionBar());
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_layout, insectDetailsFragment);
@@ -97,11 +92,11 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         settingsFragment = new SettingsFragment();
-        settingsFragment.setActionBar(getSupportActionBar());
 
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_layout, settingsFragment);
-        fragmentTransaction.commit();
+       getSupportFragmentManager()
+               .beginTransaction()
+               .replace(R.id.fragment_layout, settingsFragment)
+               .commit();
 
         setScreenId(SETTINGS_SCREEN_ID);
     }
@@ -133,9 +128,8 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
         setAppParamsToDefault();
 
-       insectListFragment = new InsectListFragment();
+        insectListFragment = new InsectListFragment();
         insectListFragment.setListOfInsects(AppBugMaster.insectsList);
-        insectListFragment.setActionBar(getSupportActionBar());
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_layout, insectListFragment);
@@ -186,7 +180,6 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
             AppBugMaster.quizQuestion = new Question();
             AppBugMaster.quizQuestion = ap.prepareQuestionForQuizFragment();
-
         }
     }
 
