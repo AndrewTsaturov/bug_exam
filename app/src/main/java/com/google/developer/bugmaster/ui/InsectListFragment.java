@@ -111,8 +111,6 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
     @Override
     public void onInsectClick(int position) {
-        AppBugMaster.insectListChoosenPosition = position;
-
         fragmentInterface.detailsScreenLaunch(position);
     }
 

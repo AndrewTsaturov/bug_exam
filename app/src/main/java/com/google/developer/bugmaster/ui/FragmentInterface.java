@@ -21,8 +21,4 @@ public interface FragmentInterface {
     byte SETTINGS_SCREEN_ID = 4;
 
     String INTENT_QUIZ_SCREEN_LAUNCH = "quiz launch key";
-
-    String ANSWER_CHECKED_INDEX= "checked index";
-
-    String LIST_POSITION_KEY = "list position";
 }

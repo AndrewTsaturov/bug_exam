@@ -2,6 +2,7 @@ package com.google.developer.bugmaster.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -24,26 +25,13 @@ import java.util.ArrayList;
  * the database from the chosen schema.
  * This class contains methods to filling the SQLite Database
  */
-public class BugsDbHelper extends SQLiteOpenHelper {
+public class BugsDbHelper extends SQLiteOpenHelper implements SQLiteConsts {
 
-    private static final String TAG = BugsDbHelper.class.getSimpleName();
-
-
-    //Used to read data from res/ and assets/
+    //Used to read data from res/
     private Resources mResources;
 
-
-    //private JSON Consts
-    private String JSON_ARRAY_NAME = "insects";
-    private String JSON_KEY_NAME = "friendlyName";
-    private String JSON_KEY_SCIENTIFIC_NAME = "scientificName";
-    private String JSON_KEY_CLASSIFICATION = "classification";
-    private String JSON_KEY_IMAGE_ASSET = "imageAsset";
-    private String JSON_KEY_DANGER_LEVEL = "dangerLevel";
-
-
     public BugsDbHelper(Context context) {
-        super(context, SQLiteConsts.DATABASE_NAME, null, SQLiteConsts.DB_VERSION);
+        super(context, DATABASE_NAME, null, DB_VERSION);
 
         mResources = context.getResources();
     }
@@ -55,7 +43,7 @@ public class BugsDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQLiteConsts.UPDATE);
+        db.execSQL(UPDATE);
         onCreate(db);
     }
 
@@ -74,21 +62,24 @@ public class BugsDbHelper extends SQLiteOpenHelper {
 
     public ArrayList<Insect> getInsectsList() {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(SQLiteConsts.GET_TABLE_FOR_CURSOR, null);
+        Cursor cursor = db.rawQuery(GET_TABLE_FOR_CURSOR, null);
 
-        ArrayList result = new ArrayList();
+        ArrayList<Insect> result = new ArrayList<>();
 
         while (cursor.moveToNext()) {
             Insect insect = new Insect();
-            insect.setId(cursor.getInt(0));
-            insect.setName(cursor.getString(1));
-            insect.setScientificName(cursor.getString(2));
-            insect.setClassification(cursor.getString(3));
-            insect.setImageAsset(cursor.getString(4));
-            insect.setDangerLevel(cursor.getInt(5));
+            insect.setId(cursor.getInt(PRIMARY_KEY_COlUMN_INDEX));
+            insect.setName(cursor.getString(NAME_COLUMN_INDEX));
+            insect.setScientificName(cursor.getString(SCIENTIFIC_NAME_COLUMN_INDEX));
+            insect.setClassification(cursor.getString(CLASSIFICATION_COLUMN_INDEX));
+            insect.setImageAsset(cursor.getString(IMAGE_ASSET_COLUMN_INDEX));
+            insect.setDangerLevel(cursor.getInt(DANGER_LEVEL_COLUMN_INDEX));
 
             result.add(insect);
         }
+
+        cursor.close();
+
         return result;
     }
 
@@ -97,13 +88,13 @@ public class BugsDbHelper extends SQLiteOpenHelper {
 
         if (!isInsectExist(db, insect)) {
             ContentValues cv = new ContentValues();
-            cv.put(SQLiteConsts.NAME_ID, insect.getName());
-            cv.put(SQLiteConsts.SCIENTIFIC_NAME_ID, insect.getScientificName());
-            cv.put(SQLiteConsts.CLASSIFICATION_ID, insect.getClassification());
-            cv.put(SQLiteConsts.IMAGE_ASSET_ID, insect.getImageAsset());
-            cv.put(SQLiteConsts.DANGER_LEVEL_ID, insect.getDangerLevel());
+            cv.put(NAME_COLUMN, insect.getName());
+            cv.put(SCIENTIFIC_NAME_COLUMN, insect.getScientificName());
+            cv.put(CLASSIFICATION_COLUMN, insect.getClassification());
+            cv.put(IMAGE_ASSET_COLUMN, insect.getImageAsset());
+            cv.put(DANGER_LEVEL_COLUMN, insect.getDangerLevel());
 
-            db.insert(SQLiteConsts.TABLE_NAME, null, cv);
+            db.insert(TABLE_NAME, null, cv);
             db.close();
         }
     }
@@ -115,7 +106,10 @@ public class BugsDbHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(SQLiteConsts.GET_TABLE_FOR_CURSOR, null);
 
         while (cursor.moveToNext())
-            if (cursor.getString(2).equals(insect.getScientificName())) result = true;
+            if (cursor.getString(SCIENTIFIC_NAME_COLUMN_INDEX).equals(insect.getScientificName()))
+                result = true;
+
+        cursor.close();
 
         return result;
     }
@@ -168,8 +162,6 @@ public class BugsDbHelper extends SQLiteOpenHelper {
         }
 
         //Parse resource into key/values
-        final String rawJson = builder.toString();
-
-        return rawJson;
+        return builder.toString();
     }
 }

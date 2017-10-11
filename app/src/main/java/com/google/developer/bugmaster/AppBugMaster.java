@@ -17,11 +17,13 @@ import java.util.Comparator;
 
 public class AppBugMaster extends Application {
 
-    public static ArrayList<Insect> insectsList = new ArrayList<>();
+    public ArrayList<Insect> insectsList = new ArrayList<>();
 
-    public static Question quizQuestion;
+    public Question quizQuestion;
 
-    public static int insectListChoosenPosition = Integer.MIN_VALUE, quizFragmentChoosenAnswer = Integer.MIN_VALUE;
+    public int insectListChoosenPosition = Integer.MIN_VALUE;
+
+    public static int quizFragmentChoosenAnswer = Integer.MIN_VALUE;
 
     @Override
     public void onCreate() {
@@ -38,18 +40,50 @@ public class AppBugMaster extends Application {
             Collections.sort(insectsList, new Insect.CommonNameComparator());
     }
 
-    public Question prepareQuestionForQuizFragment(){
+    public void prepareQuestionForQuizFragment(){
         Question  question = new Question();
-        question.createQuestion(insectsList, insectsList.size() - 1);
+        question.createQuestion(insectsList);
 
-        return question;
+        setQuizQuestion(question);
     }
 
     private void loadData(){
         DatabaseManager manager = new DatabaseManager(getApplicationContext());
 
-        insectsList = manager.loadInsects();
+        setInsectsList(manager.loadInsects());
+
         Log.d("insectsListSize", "данные загружены");
     }
 
+    public ArrayList<Insect> getInsectsList() {
+        return insectsList;
+    }
+
+    public Question getQuizQuestion() {
+        return quizQuestion;
+    }
+
+    public int getInsectListChoosenPosition() {
+        return insectListChoosenPosition;
+    }
+
+    public int getQuizFragmentChoosenAnswer() {
+        return quizFragmentChoosenAnswer;
+    }
+
+    public void setInsectsList(ArrayList<Insect> insectsList) {
+        this.insectsList = insectsList;
+    }
+
+    public void setQuizQuestion(Question quizQuestion) {
+        this.quizQuestion = quizQuestion;
+    }
+
+    public void setInsectListChoosenPosition(int insectListChoosenPosition) {
+        this.insectListChoosenPosition = insectListChoosenPosition;
+    }
+
+    public void setQuizFragmentChoosenAnswer(int quizFragmentChoosenAnswer) {
+        this.quizFragmentChoosenAnswer = quizFragmentChoosenAnswer;
+    }
 }

@@ -12,21 +12,17 @@ import java.util.concurrent.ExecutionException;
  * Handling the threads with AsyncTask loader
  */
 public class DatabaseManager {
-    Context context;
+    private BugsDbHelper dbHelper;
 
-    BugsDbHelper dbHelper;
-
-    DbLoader loader;
+    private DbLoader loader;
 
     public DatabaseManager(Context context) {
-        this.context = context;
-
         dbHelper = new BugsDbHelper(context);
 
         loader = new DbLoader();
     }
 
-    public ArrayList<Insect> loadInsects(){
+    public ArrayList<Insect> loadInsects() {
         ArrayList<Insect> result = new ArrayList<>();
 
         loader.execute();
@@ -42,9 +38,9 @@ public class DatabaseManager {
         return result;
     }
 
-    private class DbLoader extends AsyncTask<Void, Void, ArrayList<Insect>>{
+    private class DbLoader extends AsyncTask<Void, Void, ArrayList<Insect>> {
 
-        ArrayList insects = new ArrayList();
+        ArrayList<Insect> insects = new ArrayList<>();
 
         @Override
         protected ArrayList<Insect> doInBackground(Void... params) {
@@ -60,5 +56,4 @@ public class DatabaseManager {
             super.onPostExecute(insects);
         }
     }
-
 }

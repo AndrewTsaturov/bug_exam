@@ -19,6 +19,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class AlarmReceiver extends BroadcastReceiver {
+    //FIXME alarm manager fix please
     private static final String TAG = AlarmReceiver.class.getSimpleName();
 
 
