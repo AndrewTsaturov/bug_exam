@@ -11,14 +11,16 @@ import java.util.concurrent.ExecutionException;
  * for this application.
  * Handling the threads with AsyncTask loader
  */
-public class DatabaseManager {
+
+ public class DbManager {
     private BugsDbHelper dbHelper;
 
     private DbLoader loader;
 
-    public DatabaseManager(Context context) {
-        dbHelper = new BugsDbHelper(context);
 
+    public DbManager(Context context) {
+
+        dbHelper = new BugsDbHelper(context);
         loader = new DbLoader();
     }
 
@@ -29,16 +31,14 @@ public class DatabaseManager {
 
         try {
             result = loader.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
 
         return result;
     }
 
-    private class DbLoader extends AsyncTask<Void, Void, ArrayList<Insect>> {
+     private class DbLoader extends AsyncTask<Void, Void, ArrayList<Insect>> {
 
         ArrayList<Insect> insects = new ArrayList<>();
 

@@ -3,13 +3,13 @@ package com.google.developer.bugmaster;
 import android.app.Application;
 import android.util.Log;
 
-import com.google.developer.bugmaster.data.DatabaseManager;
 import com.google.developer.bugmaster.data.Insect;
+import com.google.developer.bugmaster.data.DbManager;
+import com.google.developer.bugmaster.reminders.AlarmReceiver;
 import com.google.developer.bugmaster.utils.Question;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * Created by Дом on 04.10.2017.
@@ -25,12 +25,13 @@ public class AppBugMaster extends Application {
 
     public static int quizFragmentChoosenAnswer = Integer.MIN_VALUE;
 
+    AlarmReceiver alarmReceiver;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         loadData();
-
     }
 
     public void sortInsectList(boolean sortFlag){
@@ -48,7 +49,7 @@ public class AppBugMaster extends Application {
     }
 
     private void loadData(){
-        DatabaseManager manager = new DatabaseManager(getApplicationContext());
+        DbManager manager = new DbManager(getApplicationContext());
 
         setInsectsList(manager.loadInsects());
 

@@ -36,17 +36,13 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
     private ArrayList<Insect> listOfInsects;
 
-    FragmentInterface fragmentInterface;
+    private FragmentInterface fragmentInterface;
 
-    InsectRecyclerAdapter recyclerAdapter;
+    private InsectRecyclerAdapter recyclerAdapter;
 
     @BindView(R.id.insect_list) RecyclerView insectListView;
 
     @BindView(R.id.list_fab) FloatingActionButton quizLaunchFab;
-
-    ActionBar actionBar;
-
-
 
     //native Fragment callbacks -->
 
@@ -87,8 +83,6 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        actionBar.setDisplayHomeAsUpEnabled(false);
-
         inflater.inflate(R.menu.menu_main, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -107,7 +101,6 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
         return super.onOptionsItemSelected(item);
     }
 
-    //onIsectClick override -->
 
     @Override
     public void onInsectClick(int position) {
@@ -131,10 +124,6 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
     public void setListOfInsects(ArrayList<Insect> listOfInsects) {
         this.listOfInsects = listOfInsects;
-    }
-
-    public void setActionBar(ActionBar actionBar) {
-        this.actionBar = actionBar;
     }
 
     public void setFragmentInterface(MainActivity mainActivity){

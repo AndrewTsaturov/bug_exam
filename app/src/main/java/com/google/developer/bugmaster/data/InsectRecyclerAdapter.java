@@ -36,12 +36,13 @@ public class InsectRecyclerAdapter extends
         this.context = context;
     }
 
-    public void setOnItemInterface(InsectListFragment insectListFragment){
-       onItemInterface = insectListFragment;
+    public void setOnItemInterface(InsectListFragment insectListFragment) {
+        onItemInterface = insectListFragment;
     }
 
     @Override
     public InsectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //FIXME--> refact list_item
         View itemView = LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.insect_list_item, parent, false);
 
@@ -50,7 +51,7 @@ public class InsectRecyclerAdapter extends
 
     @Override
     public void onBindViewHolder(InsectHolder holder, int position) {
-      holder.commonNameTextViev.setText(insects.get(position).getName());
+        holder.commonNameTextViev.setText(insects.get(position).getName());
         holder.scientNameTextView.setText(insects.get(position).getScientificName());
         holder.dangerLevel.setDangerLevel(insects.get(position).getDangerLevel(), context);
     }
@@ -61,7 +62,7 @@ public class InsectRecyclerAdapter extends
     }
 
     /* ViewHolder for each insect item */
-    public class InsectHolder extends RecyclerView.ViewHolder  {
+    public class InsectHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.item_danger_level) DangerLevelView dangerLevel;
         @BindView(R.id.item_txt_common_name) TextView commonNameTextViev;

@@ -6,15 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.view.MenuItem;
 
-
 import com.google.developer.bugmaster.ui.FragmentInterface;
 import com.google.developer.bugmaster.ui.InsectDetailsFragment;
 import com.google.developer.bugmaster.ui.InsectListFragment;
 import com.google.developer.bugmaster.ui.QuizFragment;
 import com.google.developer.bugmaster.ui.SettingsFragment;
 
-
 public class MainActivity extends AppCompatActivity implements FragmentInterface {
+
 
     private InsectDetailsFragment insectDetailsFragment;
     private InsectListFragment insectListFragment;
@@ -76,8 +75,9 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
         ap.setInsectListChoosenPosition(position);
 
         insectDetailsFragment = new InsectDetailsFragment();
+
         insectDetailsFragment.setInsect(ap.getInsectsList().get(position));
-        insectDetailsFragment.setActionBar(getSupportActionBar());
+
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -93,12 +93,12 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         settingsFragment = new SettingsFragment();
-        settingsFragment.setActionBar(getSupportActionBar());
 
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_layout, settingsFragment)
                 .commit();
+
 
         setScreenId(SETTINGS_SCREEN_ID);
     }
@@ -132,9 +132,9 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
         setAppParamsToDefault();
 
         insectListFragment = new InsectListFragment();
+
         insectListFragment.setListOfInsects(((AppBugMaster)
                 getApplicationContext()).getInsectsList());
-        insectListFragment.setActionBar(getSupportActionBar());
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -186,7 +186,9 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
             AppBugMaster ap = ((AppBugMaster) getApplicationContext());
 
+
             ap.prepareQuestionForQuizFragment();
+
         }
     }
 

@@ -36,13 +36,11 @@ public class InsectDetailsFragment extends Fragment{
     @BindView(R.id.details_txt_classification) TextView classificationTextView;
     @BindView(R.id.details_danger_level) ProgressBar dangerRatingView;
 
-    ActionBar actionBar;
-
     private Unbinder unbinder;
 
-    FragmentInterface fragmentInterface;
+    private FragmentInterface fragmentInterface;
 
-    Insect insect;
+    private Insect insect;
 
     //native Fragment callbacks
 
@@ -64,6 +62,7 @@ public class InsectDetailsFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //FIXME--> refact details layout
         View fragmentView = inflater.inflate(R.layout.fragment_incect_details, container, false);
 
         unbinder = ButterKnife.bind(this, fragmentView);
@@ -83,7 +82,10 @@ public class InsectDetailsFragment extends Fragment{
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
+        if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+        else throw new RuntimeException("ActionBar Device Conflict!");
+
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -117,9 +119,5 @@ public class InsectDetailsFragment extends Fragment{
 
     private void setFragmentInterface(MainActivity mainActivity){
         fragmentInterface = mainActivity;
-    }
-
-    public void setActionBar(ActionBar actionBar) {
-        this.actionBar = actionBar;
     }
 }

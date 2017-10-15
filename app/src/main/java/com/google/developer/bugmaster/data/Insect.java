@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 public final class Insect {
 
-    //TODO create method which create bitmap for insect details imgview
+    //--> create method which create bitmap for insect details imgview
 
     private static final String TAG = Insect.class.getSimpleName();
 

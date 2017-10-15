@@ -2,14 +2,12 @@ package com.google.developer.bugmaster.data;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.google.developer.bugmaster.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +25,9 @@ import java.util.ArrayList;
  */
 public class BugsDbHelper extends SQLiteOpenHelper implements SQLiteConsts {
 
+
     //Used to read data from res/
+
     private Resources mResources;
 
     public BugsDbHelper(Context context) {
@@ -38,11 +38,13 @@ public class BugsDbHelper extends SQLiteOpenHelper implements SQLiteConsts {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //FIXME--> refact class contract
         db.execSQL(SQLiteConsts.CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
         db.execSQL(UPDATE);
         onCreate(db);
     }
@@ -53,7 +55,8 @@ public class BugsDbHelper extends SQLiteOpenHelper implements SQLiteConsts {
 
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
-                addInsectToDatabase(createInsectFromJsonObj(jsonArray.getJSONObject(i)));
+                Insect insect = createInsectFromJsonObj(jsonArray.getJSONObject(i));
+                addInsectToDatabase(insect);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -99,7 +102,6 @@ public class BugsDbHelper extends SQLiteOpenHelper implements SQLiteConsts {
         }
     }
 
-
     private boolean isInsectExist(SQLiteDatabase db, Insect insect) {
         boolean result = false;
 
@@ -111,6 +113,7 @@ public class BugsDbHelper extends SQLiteOpenHelper implements SQLiteConsts {
 
         cursor.close();
 
+        cursor.close();
         return result;
     }
 
@@ -129,7 +132,6 @@ public class BugsDbHelper extends SQLiteOpenHelper implements SQLiteConsts {
 
         return result;
     }
-
 
     private JSONArray getArrayFromRawJson(String rawJson) {
         JSONArray result = null;
