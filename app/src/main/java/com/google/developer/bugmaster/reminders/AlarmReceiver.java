@@ -55,9 +55,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         PendingIntent serviceSender = PendingIntent
                 .getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-
-
-
         if (enabled) {
             Log.d(TAG, "enabled");
             Calendar startTime = Calendar.getInstance();
@@ -75,7 +72,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                 Log.w(TAG, "Unable to determine alarm start time", e);
                 return;
             }
-
+  
             startTime.set(Calendar.HOUR_OF_DAY, bufferDate.getHours());
             Log.d(TAG, "time" + bufferDate.getHours());
             startTime.set(Calendar.MINUTE, bufferDate.getMinutes());

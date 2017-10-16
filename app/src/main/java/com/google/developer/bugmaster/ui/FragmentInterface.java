@@ -21,4 +21,6 @@ public interface FragmentInterface {
     byte SETTINGS_SCREEN_ID = 4;
 
     String INTENT_QUIZ_SCREEN_LAUNCH = "quiz launch key";
+
+    String INTENT_ALARM_RECIEVER_ACION = ""
 }
