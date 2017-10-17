@@ -2,7 +2,6 @@ package com.google.developer.bugmaster;
 
 import android.os.Bundle;
 
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import android.view.MenuItem;
@@ -12,13 +11,10 @@ import com.google.developer.bugmaster.ui.InsectDetailsFragment;
 import com.google.developer.bugmaster.ui.InsectListFragment;
 import com.google.developer.bugmaster.ui.QuizFragment;
 import com.google.developer.bugmaster.ui.SettingsFragment;
-import com.google.developer.bugmaster.utils.Question;
-
-
 
 public class MainActivity extends AppCompatActivity implements FragmentInterface {
 
-    private FragmentTransaction fragmentTransaction;
+
     private InsectDetailsFragment insectDetailsFragment;
     private InsectListFragment insectListFragment;
     private QuizFragment quizFragment;
@@ -44,14 +40,14 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) listScreenLaunch();
+        if (item.getItemId() == android.R.id.home) listScreenLaunch();
 
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
-        if(screenId == MAIN_SCREEN_ID)
+        if (screenId == MAIN_SCREEN_ID)
             super.onBackPressed();
 
         else listScreenLaunch();
@@ -62,11 +58,10 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
     public void sortInsectList() {
         AppBugMaster ap = ((AppBugMaster) getApplicationContext());
 
-        if(!sortFlag) {
+        if (!sortFlag) {
             ap.sortInsectList(false);
             setSortFlag(true);
-        }
-        else {
+        } else {
             ap.sortInsectList(true);
             setSortFlag(false);
         }
@@ -76,12 +71,18 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
     @Override
     public void detailsScreenLaunch(int position) {
-        insectDetailsFragment = new InsectDetailsFragment();
-        insectDetailsFragment.setInsect(AppBugMaster.insectsList.get(position));
+        AppBugMaster ap = (AppBugMaster) getApplicationContext();
+        ap.setInsectListChoosenPosition(position);
 
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_layout, insectDetailsFragment);
-        fragmentTransaction.commit();
+        insectDetailsFragment = new InsectDetailsFragment();
+
+        insectDetailsFragment.setInsect(ap.getInsectsList().get(position));
+
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_layout, insectDetailsFragment)
+                .commit();
 
         setScreenId(DETAILS_SCREEN_ID);
     }
@@ -93,59 +94,71 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
         settingsFragment = new SettingsFragment();
 
-       getSupportFragmentManager()
-               .beginTransaction()
-               .replace(R.id.fragment_layout, settingsFragment)
-               .commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_layout, settingsFragment)
+                .commit();
+
 
         setScreenId(SETTINGS_SCREEN_ID);
     }
 
     @Override
     public void quizScreenLaunch() {
-        if(AppBugMaster.quizQuestion == null){
-            AppBugMaster ap = ((AppBugMaster) getApplicationContext());
+        AppBugMaster ap = (AppBugMaster) getApplicationContext();
 
-            AppBugMaster.quizQuestion = new Question();
-            AppBugMaster.quizQuestion = ap.prepareQuestionForQuizFragment();
+
+        if (ap.getQuizQuestion() == null) {
+            ap.prepareQuestionForQuizFragment();
         }
 
         quizFragment = new QuizFragment();
-        quizFragment.setQuestion(AppBugMaster.quizQuestion);
+        quizFragment.setQuestion(ap.getQuizQuestion());
         quizFragment.setActionBar(getSupportActionBar());
 
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_layout, quizFragment);
-        fragmentTransaction.commit();
+        getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.fragment_layout, quizFragment)
+                .commit();
 
         setScreenId(QUIZ_SCREEN_ID);
     }
 
     @Override
     public void listScreenLaunch() {
+        AppBugMaster ap = (AppBugMaster) getApplicationContext();
+
+        if(screenId == SETTINGS_SCREEN_ID){
+            ap.sendReminderBradcast();
+        }
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
 
         setAppParamsToDefault();
 
         insectListFragment = new InsectListFragment();
-        insectListFragment.setListOfInsects(AppBugMaster.insectsList);
 
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_layout, insectListFragment);
-        fragmentTransaction.commit();
+        insectListFragment.setListOfInsects(ap.getInsectsList());
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_layout, insectListFragment)
+                .commit();
 
         setScreenId(MAIN_SCREEN_ID);
     }
 
-    private void setScreenToAttach(){
-        switch (screenId){
+    private void setScreenToAttach() {
+        AppBugMaster ap = (AppBugMaster) getApplicationContext();
+
+        switch (screenId) {
             case MAIN_SCREEN_ID:
                 listScreenLaunch();
                 break;
 
             case DETAILS_SCREEN_ID:
-                detailsScreenLaunch(AppBugMaster.insectListChoosenPosition);
+                detailsScreenLaunch(ap.getInsectListChoosenPosition());
                 break;
 
             case QUIZ_SCREEN_ID:
@@ -170,23 +183,25 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
         this.sortFlag = sortFlag;
     }
 
-    private void getIntentMessageFromReminder(){
+    private void getIntentMessageFromReminder() {
         checkQuizLaunch = getIntent().getBooleanExtra(INTENT_QUIZ_SCREEN_LAUNCH, false);
 
-        if(checkQuizLaunch){
+        if (checkQuizLaunch) {
             setScreenId(QUIZ_SCREEN_ID);
 
             AppBugMaster ap = ((AppBugMaster) getApplicationContext());
 
-            AppBugMaster.quizQuestion = new Question();
-            AppBugMaster.quizQuestion = ap.prepareQuestionForQuizFragment();
+
+            ap.prepareQuestionForQuizFragment();
+
         }
     }
 
-    private void setAppParamsToDefault(){
-        AppBugMaster.insectListChoosenPosition = Integer.MIN_VALUE;
-        AppBugMaster.quizFragmentChoosenAnswer = Integer.MIN_VALUE;
+    private void setAppParamsToDefault() {
+        AppBugMaster ap = ((AppBugMaster) getApplicationContext());
 
-        AppBugMaster.quizQuestion = null;
+        ap.setInsectListChoosenPosition(Integer.MIN_VALUE);
+        ap.setQuizFragmentChoosenAnswer(Integer.MIN_VALUE);
+        ap.setQuizQuestion(null);
     }
 }

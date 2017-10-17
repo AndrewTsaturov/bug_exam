@@ -42,7 +42,9 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
     FragmentInterface fragmentInterface;
 
 
+    public QuizFragment() {
 
+    }
 
     public void setActionBar(ActionBar actionBar) {
         this.actionBar = actionBar;
@@ -59,6 +61,7 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         setRetainInstance(true);
 
@@ -103,6 +106,7 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
     public void onCorrectAnswerSelected() {
         answerCorrectTextView.setTextColor(getResources().getColor(R.color.colorCorrect));
         answerCorrectTextView.setText(getString(R.string.answer_correct));
+
 
         AppBugMaster.quizFragmentChoosenAnswer = answerView.getCheckedIndex();
     }

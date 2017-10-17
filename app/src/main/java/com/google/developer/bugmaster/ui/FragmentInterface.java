@@ -22,7 +22,5 @@ public interface FragmentInterface {
 
     String INTENT_QUIZ_SCREEN_LAUNCH = "quiz launch key";
 
-    String ANSWER_CHECKED_INDEX= "checked index";
-
-    String LIST_POSITION_KEY = "list position";
+    String INTENT_ALARM_RECIEVER_ACION = "com.google.developer.bugmaster.UPDATE_REMINDER";
 }

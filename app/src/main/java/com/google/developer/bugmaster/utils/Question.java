@@ -14,9 +14,9 @@ import java.util.Random;
 
 public class Question {
 
-    String questionSubject, correctAnswer;
+    private String questionSubject, correctAnswer;
 
-    List<String> answerOptions;
+    private List<String> answerOptions;
 
 
     int ANSWER_OPTIONS_COUNT = 5;
@@ -49,19 +49,15 @@ public class Question {
         return answerOptions;
     }
 
-    public boolean isAnswerCorrect(String choosenAnswer){
 
-        if (choosenAnswer.equals(getCorrectAnswer())) return true;
+    public void createQuestion(ArrayList<Insect> insectList){
+        int randomIndex = getRandomIndex(insectList.size());
 
-        else return false;
-    }
+        setQuestionSubject(insectList.get(randomIndex).getName());
 
-    public void createQuestion(ArrayList<Insect> insectList, int index){
-        setQuestionSubject(insectList.get(index).getName());
+        setCorrectAnswer(insectList.get(randomIndex).getScientificName());
 
-        setCorrectAnswer(insectList.get(index).getScientificName());
-
-        setAnswerOptions(fillAnswerOptions(insectList.get(index).getScientificName(), insectList));
+        setAnswerOptions(fillAnswerOptions(insectList.get(randomIndex).getScientificName(), insectList));
     }
 
     private List<String> fillAnswerOptions(String correctAnswer, ArrayList<Insect> insectList){
