@@ -126,6 +126,12 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
     @Override
     public void listScreenLaunch() {
+        AppBugMaster ap = (AppBugMaster) getApplicationContext();
+
+        if(screenId == SETTINGS_SCREEN_ID){
+            ap.sendReminderBradcast();
+        }
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
 
@@ -133,8 +139,7 @@ public class MainActivity extends AppCompatActivity implements FragmentInterface
 
         insectListFragment = new InsectListFragment();
 
-        insectListFragment.setListOfInsects(((AppBugMaster)
-                getApplicationContext()).getInsectsList());
+        insectListFragment.setListOfInsects(ap.getInsectsList());
 
         getSupportFragmentManager()
                 .beginTransaction()

@@ -22,5 +22,5 @@ public interface FragmentInterface {
 
     String INTENT_QUIZ_SCREEN_LAUNCH = "quiz launch key";
 
-    String INTENT_ALARM_RECIEVER_ACION = ""
+    String INTENT_ALARM_RECIEVER_ACION = "com.google.developer.bugmaster.UPDATE_REMINDER";
 }

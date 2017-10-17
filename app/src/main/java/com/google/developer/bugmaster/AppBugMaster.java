@@ -1,6 +1,7 @@
 package com.google.developer.bugmaster;
 
 import android.app.Application;
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.developer.bugmaster.data.Insect;
@@ -16,6 +17,8 @@ import java.util.Collections;
  */
 
 public class AppBugMaster extends Application {
+
+    private static String ALARM_RECIEVER_ACION = "com.google.developer.bugmaster.UPDATE_REMINDER";
 
     public ArrayList<Insect> insectsList = new ArrayList<>();
 
@@ -54,6 +57,13 @@ public class AppBugMaster extends Application {
         setInsectsList(manager.loadInsects());
 
         Log.d("insectsListSize", "данные загружены");
+    }
+
+    public void sendReminderBradcast(){
+        Intent intent = new Intent();
+        intent.setAction(ALARM_RECIEVER_ACION);
+        intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+        sendBroadcast(intent);
     }
 
     public ArrayList<Insect> getInsectsList() {
