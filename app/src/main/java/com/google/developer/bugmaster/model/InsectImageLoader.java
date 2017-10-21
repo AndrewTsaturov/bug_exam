@@ -1,6 +1,7 @@
-package com.google.developer.bugmaster.data;
+package com.google.developer.bugmaster.model;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,12 +15,12 @@ import java.util.concurrent.ExecutionException;
  * Created by Андрей on 21.09.2017.
  */
 
-public class ImageLoader {
+public class InsectImageLoader {
 
-    private Activity activity;
+    private Context context;
 
-    public ImageLoader(Activity activity) {
-        this.activity = activity;
+    public InsectImageLoader(Context context) {
+        this.context = context;
     }
 
     public Bitmap loadImage(String imageAsset){
@@ -53,7 +54,7 @@ public class ImageLoader {
 
             InputStream input;
 
-            AssetManager manager = activity.getAssets();
+            AssetManager manager = context.getAssets();
             try {
                 input = manager.open(imageAsset);
                 result = BitmapFactory.decodeStream(input);

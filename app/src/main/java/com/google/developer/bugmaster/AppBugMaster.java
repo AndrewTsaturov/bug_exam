@@ -1,15 +1,17 @@
 package com.google.developer.bugmaster;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
-import com.google.developer.bugmaster.data.DatabaseManager;
-import com.google.developer.bugmaster.data.Insect;
-import com.google.developer.bugmaster.utils.Question;
+import com.google.developer.bugmaster.model.Insect;
+import com.google.developer.bugmaster.model.InsectsDbManager;
+import com.google.developer.bugmaster.reminders.AlarmReceiver;
+import com.google.developer.bugmaster.model.Question;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * Created by Дом on 04.10.2017.
@@ -17,39 +19,19 @@ import java.util.Comparator;
 
 public class AppBugMaster extends Application {
 
-    public static ArrayList<Insect> insectsList = new ArrayList<>();
+    private static String ALARM_RECIEVER_ACION = "com.google.developer.bugmaster.UPDATE_REMINDER";
 
-    public static Question quizQuestion;
+    public static Context context;
 
-    public static int insectListChoosenPosition = Integer.MIN_VALUE, quizFragmentChoosenAnswer = Integer.MIN_VALUE;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        loadData();
-
+    public static Context getContext() {
+        return context;
     }
 
-    public void sortInsectList(boolean sortFlag){
-        if(sortFlag)
-            Collections.sort(insectsList, new Insect.DangerLevelComparator());
-        else
-            Collections.sort(insectsList, new Insect.CommonNameComparator());
+    //Todo перенести броадкаст в презентер
+    public void sendReminderBradcast(){
+        Intent intent = new Intent();
+        intent.setAction(ALARM_RECIEVER_ACION);
+        intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+        sendBroadcast(intent);
     }
-
-    public Question prepareQuestionForQuizFragment(){
-        Question  question = new Question();
-        question.createQuestion(insectsList, insectsList.size() - 1);
-
-        return question;
-    }
-
-    private void loadData(){
-        DatabaseManager manager = new DatabaseManager(getApplicationContext());
-
-        insectsList = manager.loadInsects();
-        Log.d("insectsListSize", "данные загружены");
-    }
-
 }

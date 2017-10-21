@@ -1,7 +1,7 @@
-package com.google.developer.bugmaster.utils;
+package com.google.developer.bugmaster.model;
 
 
-import com.google.developer.bugmaster.data.Insect;
+import com.google.developer.bugmaster.model.Insect;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,12 +13,13 @@ import java.util.Random;
  */
 
 public class Question {
-    String questionSubject, correctAnswer;
 
-    List<String> answerOptions;
+    private String questionSubject, correctAnswer;
+
+    private List<String> answerOptions;
 
 
-    int ANSWER_OPTIONS_COUNT = 5;
+    public static int ANSWER_OPTIONS_COUNT = 5;
 
 
     public Question() {
@@ -48,19 +49,15 @@ public class Question {
         return answerOptions;
     }
 
-    public boolean isAnswerCorrect(String choosenAnswer){
 
-        if (choosenAnswer.equals(getCorrectAnswer())) return true;
+    public void prepareQuestion(ArrayList<Insect> insectList){
+        int randomIndex = getRandomIndex(insectList.size());
 
-        else return false;
-    }
+        setQuestionSubject(insectList.get(randomIndex).getName());
 
-    public void createQuestion(ArrayList<Insect> insectList, int index){
-        setQuestionSubject(insectList.get(index).getName());
+        setCorrectAnswer(insectList.get(randomIndex).getScientificName());
 
-        setCorrectAnswer(insectList.get(index).getScientificName());
-
-        setAnswerOptions(fillAnswerOptions(insectList.get(index).getScientificName(), insectList));
+        setAnswerOptions(fillAnswerOptions(insectList.get(randomIndex).getScientificName(), insectList));
     }
 
     private List<String> fillAnswerOptions(String correctAnswer, ArrayList<Insect> insectList){

@@ -1,6 +1,7 @@
 package com.google.developer.bugmaster.ui;
 
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,8 +18,9 @@ import android.widget.TextView;
 
 import com.google.developer.bugmaster.MainActivity;
 import com.google.developer.bugmaster.R;
-import com.google.developer.bugmaster.data.ImageLoader;
-import com.google.developer.bugmaster.data.Insect;
+import com.google.developer.bugmaster.model.Insect;
+import com.google.developer.bugmaster.presenters.Presenter;
+import com.google.developer.bugmaster.presenters.PresenterInterface;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,33 +32,29 @@ import butterknife.Unbinder;
 
 public class InsectDetailsFragment extends Fragment{
 
-    @BindView(R.id.details_img_view) ImageView insectImage;
+    @BindView(R.id.details_img_view) ImageView insectImageView;
     @BindView(R.id.details_txt_common_name) TextView commonNameTxtView;
     @BindView(R.id.details_txt_scient_name) TextView scientNameTxtView;
     @BindView(R.id.details_txt_classification) TextView classificationTextView;
     @BindView(R.id.details_danger_level) ProgressBar dangerRatingView;
 
-    ActionBar actionBar;
-
     private Unbinder unbinder;
 
-    FragmentInterface fragmentInterface;
+    PresenterInterface presenter;
 
-    Insect insect;
+    private Insect insect;
+
+    Bitmap insectImage;
+
+    public InsectDetailsFragment() {
+        presenter = new Presenter();
+    }
 
     //native Fragment callbacks
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        setFragmentInterface((MainActivity) getActivity());
-    }
-
-    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setRetainInstance(true);
 
         setHasOptionsMenu(true);
     }
@@ -64,6 +62,7 @@ public class InsectDetailsFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //FIXME--> refact details layout
         View fragmentView = inflater.inflate(R.layout.fragment_incect_details, container, false);
 
         unbinder = ButterKnife.bind(this, fragmentView);
@@ -83,14 +82,17 @@ public class InsectDetailsFragment extends Fragment{
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
+        if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+        else throw new RuntimeException("ActionBar Device Conflict!");
+
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) fragmentInterface.listScreenLaunch();
-
+        if(item.getItemId() == android.R.id.home)
+            presenter.onBackButtonClick();
         return super.onOptionsItemSelected(item);
     }
 
@@ -103,9 +105,7 @@ public class InsectDetailsFragment extends Fragment{
 
          dangerRatingView.setProgress(insect.getDangerLevel());
 
-        ImageLoader loader = new ImageLoader(getActivity());
-
-        insectImage.setImageBitmap(loader.loadImage(insect.getImageAsset()));
+        insectImageView.setImageBitmap(insectImage);
 
     }
 
@@ -115,11 +115,7 @@ public class InsectDetailsFragment extends Fragment{
         this.insect = insect;
     }
 
-    private void setFragmentInterface(MainActivity mainActivity){
-        fragmentInterface = mainActivity;
-    }
-
-    public void setActionBar(ActionBar actionBar) {
-        this.actionBar = actionBar;
+    public void setInsectImage(Bitmap insectImage) {
+        this.insectImage = insectImage;
     }
 }

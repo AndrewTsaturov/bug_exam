@@ -1,6 +1,5 @@
 package com.google.developer.bugmaster.ui;
 
-import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -14,13 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.developer.bugmaster.AppBugMaster;
-import com.google.developer.bugmaster.MainActivity;
 import com.google.developer.bugmaster.R;
-import com.google.developer.bugmaster.data.Insect;
-import com.google.developer.bugmaster.data.InsectRecyclerAdapter;
-
-import java.util.ArrayList;
+import com.google.developer.bugmaster.presenters.Presenter;
+import com.google.developer.bugmaster.presenters.PresenterInterface;
+import com.google.developer.bugmaster.views.InsectRecyclerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,37 +26,30 @@ import butterknife.Unbinder;
  * Created by Андрей on 19.09.2017.
  */
 
-public class InsectListFragment extends Fragment implements OnItemInterface {
+public class InsectListFragment extends Fragment {
 
     private Unbinder unbinder;
 
-    private ArrayList<Insect> listOfInsects;
-
-    FragmentInterface fragmentInterface;
-
-    InsectRecyclerAdapter recyclerAdapter;
+    PresenterInterface presenter;
 
     @BindView(R.id.insect_list) RecyclerView insectListView;
 
     @BindView(R.id.list_fab) FloatingActionButton quizLaunchFab;
 
-    ActionBar actionBar;
-
-
+    public InsectListFragment() {
+        presenter = new Presenter();
+    }
 
     //native Fragment callbacks -->
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setFragmentInterface((MainActivity) getActivity());
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setRetainInstance(true);
 
         setHasOptionsMenu(true);
     }
@@ -87,8 +76,6 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        actionBar.setDisplayHomeAsUpEnabled(false);
-
         inflater.inflate(R.menu.menu_main, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -97,50 +84,24 @@ public class InsectListFragment extends Fragment implements OnItemInterface {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_sort:
-                fragmentInterface.sortInsectList();
+                presenter.onSortMenuItemClick();
                 break;
             case R.id.action_settings:
-                fragmentInterface.settingsScreenLaunch();
+                presenter.onSettingsMenuItemClick();
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    //onIsectClick override -->
-
-    @Override
-    public void onInsectClick(int position) {
-        AppBugMaster.insectListChoosenPosition = position;
-
-        fragmentInterface.detailsScreenLaunch(position);
-    }
-
-    //Setup views -->
-
     private void setupView(){
-        recyclerAdapter = new InsectRecyclerAdapter(listOfInsects, getContext());
-        recyclerAdapter.setOnItemInterface(this);
+        InsectRecyclerAdapter recyclerAdapter = new InsectRecyclerAdapter();
 
         insectListView.setLayoutManager(new LinearLayoutManager(getContext()));
         insectListView.setAdapter(recyclerAdapter);
 
 
-        quizLaunchFab.setOnClickListener(v -> fragmentInterface.quizScreenLaunch());
-    }
-
-    // public setters -->
-
-    public void setListOfInsects(ArrayList<Insect> listOfInsects) {
-        this.listOfInsects = listOfInsects;
-    }
-
-    public void setActionBar(ActionBar actionBar) {
-        this.actionBar = actionBar;
-    }
-
-    public void setFragmentInterface(MainActivity mainActivity){
-        fragmentInterface = mainActivity;
+        quizLaunchFab.setOnClickListener(v -> presenter.onQuizFabClick());
     }
 
     //insect list position getter

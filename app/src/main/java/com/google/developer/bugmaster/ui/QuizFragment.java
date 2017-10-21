@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,7 +15,9 @@ import android.widget.TextView;
 import com.google.developer.bugmaster.AppBugMaster;
 import com.google.developer.bugmaster.MainActivity;
 import com.google.developer.bugmaster.R;
-import com.google.developer.bugmaster.utils.Question;
+import com.google.developer.bugmaster.model.Question;
+import com.google.developer.bugmaster.presenters.Presenter;
+import com.google.developer.bugmaster.presenters.PresenterInterface;
 import com.google.developer.bugmaster.views.AnswerView;
 
 import butterknife.BindView;
@@ -33,34 +34,25 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
     @BindView(R.id.quiz_answer_select) AnswerView answerView;
     @BindView(R.id.quiz_text_correct) TextView answerCorrectTextView;
 
-    ActionBar actionBar;
-
     Unbinder unbinder;
 
     Question question;
 
-    FragmentInterface fragmentInterface;
+    PresenterInterface presenter;
 
 
-
-
-    public void setActionBar(ActionBar actionBar) {
-        this.actionBar = actionBar;
+    public QuizFragment() {
+       presenter = new Presenter();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        setFragmentInterface((MainActivity) getActivity());
-
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setRetainInstance(true);
 
         setHasOptionsMenu(true);
     }
@@ -85,14 +77,16 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
+        if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+        else throw new RuntimeException("ActionBar Device Conflict!");
 
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) fragmentInterface.listScreenLaunch();
+        if(item.getItemId() == android.R.id.home) presenter.onBackButtonClick();
 
         return super.onOptionsItemSelected(item);
     }
@@ -104,7 +98,7 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
         answerCorrectTextView.setTextColor(getResources().getColor(R.color.colorCorrect));
         answerCorrectTextView.setText(getString(R.string.answer_correct));
 
-        AppBugMaster.quizFragmentChoosenAnswer = answerView.getCheckedIndex();
+        presenter.onSelectedAnswerListener(answerView.getCheckedIndex());
     }
 
     @Override
@@ -112,7 +106,7 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
         answerCorrectTextView.setTextColor(getResources().getColor(R.color.colorWrong));
         answerCorrectTextView.setText(getString(R.string.answer_wrong));
 
-        AppBugMaster.quizFragmentChoosenAnswer = answerView.getCheckedIndex();
+        presenter.onSelectedAnswerListener(answerView.getCheckedIndex());
     }
 
     public void setupView(){
@@ -122,12 +116,8 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
         answerView.loadAnswers(question.getAnswerOptions(), question.getCorrectAnswer());
 
 
-        if(AppBugMaster.quizFragmentChoosenAnswer != Integer.MIN_VALUE)
-            answerView.setCheckedIndex(AppBugMaster.quizFragmentChoosenAnswer);
-    }
-
-    private void setFragmentInterface(MainActivity mainActivity){
-        fragmentInterface = mainActivity;
+        if(presenter.getChoosenAnswerIndex() != presenter.CHOSEN_ANSWER_INDEX_DEFAULT)
+            answerView.setCheckedIndex(presenter.getChoosenAnswerIndex());
     }
 
 

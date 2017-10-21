@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster.data;
+package com.google.developer.bugmaster.model;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -11,40 +11,36 @@ import java.util.concurrent.ExecutionException;
  * for this application.
  * Handling the threads with AsyncTask loader
  */
-public class DatabaseManager {
-    Context context;
 
-    BugsDbHelper dbHelper;
+ public class InsectsDbManager {
+    private InsectsDbHelper dbHelper;
 
-    DbLoader loader;
+    private DbLoader loader;
 
-    public DatabaseManager(Context context) {
-        this.context = context;
 
-        dbHelper = new BugsDbHelper(context);
+    public InsectsDbManager(Context context) {
 
+        dbHelper = new InsectsDbHelper(context);
         loader = new DbLoader();
     }
 
-    public ArrayList<Insect> loadInsects(){
+    public ArrayList<Insect> loadInsects() {
         ArrayList<Insect> result = new ArrayList<>();
 
         loader.execute();
 
         try {
             result = loader.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
 
         return result;
     }
 
-    private class DbLoader extends AsyncTask<Void, Void, ArrayList<Insect>>{
+     private class DbLoader extends AsyncTask<Void, Void, ArrayList<Insect>> {
 
-        ArrayList insects = new ArrayList();
+        ArrayList<Insect> insects = new ArrayList<>();
 
         @Override
         protected ArrayList<Insect> doInBackground(Void... params) {
@@ -60,5 +56,4 @@ public class DatabaseManager {
             super.onPostExecute(insects);
         }
     }
-
 }

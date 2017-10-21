@@ -9,6 +9,8 @@ import android.view.MenuItem;
 
 import com.google.developer.bugmaster.MainActivity;
 import com.google.developer.bugmaster.R;
+import com.google.developer.bugmaster.presenters.Presenter;
+import com.google.developer.bugmaster.presenters.PresenterInterface;
 
 /**
  * Created by Андрей on 19.09.2017.
@@ -16,42 +18,35 @@ import com.google.developer.bugmaster.R;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-    FragmentInterface fragmentInterface;
+    PresenterInterface presenter;
 
-    ActionBar actionBar;
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        setFragmentInterface((MainActivity) getActivity());
-    }
-
-    @Override
-    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.preferences, rootKey);
+    public SettingsFragment() {
+        presenter = new Presenter();
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
+        if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+        else throw new RuntimeException("ActionBar Device Conflict!");
 
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) fragmentInterface.listScreenLaunch();
+        if(item.getItemId() == android.R.id.home) presenter.onBackButtonClick();
 
         return super.onOptionsItemSelected(item);
     }
 
-    //Setter
-
-    public void setFragmentInterface(MainActivity mainActivity){
-        fragmentInterface = mainActivity;
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
-    public void setActionBar(ActionBar actionBar) {
-        this.actionBar = actionBar;
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.preferences, rootKey);
     }
 }
