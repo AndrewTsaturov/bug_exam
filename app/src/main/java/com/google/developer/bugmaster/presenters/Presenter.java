@@ -23,7 +23,7 @@ public class Presenter implements PresenterInterface {
 
     boolean isInsectListcompared;
 
-    ArrayList<Insect> insectsList;
+    ArrayList<Insect> insectsList = new ArrayList<>();
 
     Insect showingInsect;
 
@@ -33,15 +33,16 @@ public class Presenter implements PresenterInterface {
 
     Bitmap insectImage;
 
-    ModelInterface model = new Model();
+    ModelInterface model;
     ViewInterface view;
 
     public Presenter() {
+        model = new Model();
     }
 
     @Override
     public void onAttach() {
-        if(insectsList.size() != 0)
+        if(insectsList.size() == 0)
         setInsectsList(model.loadData());
 
         view = new AppView();

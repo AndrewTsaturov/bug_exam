@@ -11,7 +11,7 @@ import android.util.Log;
 
 import com.google.developer.bugmaster.MainActivity;
 import com.google.developer.bugmaster.R;
-import com.google.developer.bugmaster.ui.FragmentInterface;
+import com.google.developer.bugmaster.presenters.PresenterInterface;
 
 public class ReminderService extends IntentService {
 
@@ -47,7 +47,7 @@ public class ReminderService extends IntentService {
                 .setAutoCancel(true)
                 .build();
 
-        action.putExtra(FragmentInterface.INTENT_QUIZ_SCREEN_LAUNCH, true);
+        action.putExtra(PresenterInterface.INTENT_QUIZ_SCREEN_LAUNCH, true);
 
         manager.notify(NOTIFICATION_ID, note);
 

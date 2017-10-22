@@ -8,6 +8,9 @@ import com.google.developer.bugmaster.views.InsectListViewHolder;
 
 public interface PresenterInterface {
 
+    String INTENT_ALARM_RECIEVER_ACION = "com.google.developer.bugmaster.UPDATE_REMINDER";
+    String INTENT_QUIZ_SCREEN_LAUNCH = "quiz launch key";
+
     byte MAIN_SCREEN_ID = 1;
     byte DETAILS_SCREEN_ID = 2;
     byte QUIZ_SCREEN_ID = 3;
