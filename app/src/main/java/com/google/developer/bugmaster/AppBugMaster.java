@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 
+import com.google.developer.bugmaster.model.repositories.AppRepository;
+
 /**
  * Created by Дом on 04.10.2017.
  */
@@ -12,16 +14,17 @@ public class AppBugMaster extends Application {
 
     private static String ALARM_RECIEVER_ACION = "com.google.developer.bugmaster.UPDATE_REMINDER";
 
-    public static Context context;
+    public static AppRepository repository;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        context = getApplicationContext();
+        repository = new AppRepository();
+        repository.setContext(getApplicationContext());
     }
 
-    public static Context getContext() {
-        return context;
+    public static AppRepository getRepository() {
+        return repository;
     }
 
     //Todo перенести броадкаст в презентер

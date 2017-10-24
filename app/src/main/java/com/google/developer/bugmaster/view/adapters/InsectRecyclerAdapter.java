@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.google.developer.bugmaster.R;
 import com.google.developer.bugmaster.presenters.Presenter;
-import com.google.developer.bugmaster.presenters.PresenterInterface;
 
 
 /**

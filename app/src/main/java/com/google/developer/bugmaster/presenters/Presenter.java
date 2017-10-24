@@ -1,14 +1,13 @@
 package com.google.developer.bugmaster.presenters;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import com.google.developer.bugmaster.model.pojo.Insect;
 import com.google.developer.bugmaster.model.Model;
 import com.google.developer.bugmaster.model.ModelInterface;
 import com.google.developer.bugmaster.model.pojo.Question;
 import com.google.developer.bugmaster.view.adapters.InsectListViewHolder;
-import com.google.developer.bugmaster.view.ViewInterface;
+import com.google.developer.bugmaster.view.AppView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,18 +16,12 @@ import java.util.Collections;
  * Created by Андрей on 18.10.2017.
  */
 
-public class Presenter implements PresenterInterface {
+public class Presenter implements AppPresenter {
     String TAG = "Presenter";
 
     private static byte screenID;
 
-    private static int checkedPosition;
-
     private boolean isInsectListcompared;
-
-    private static ArrayList<Insect> insectsList = new ArrayList<>();
-
-    public static Insect showingInsect;
 
     private static int quizViewChoozenAnswerIndex;
 
@@ -37,10 +30,10 @@ public class Presenter implements PresenterInterface {
     public static Bitmap insectImage;
 
     static ModelInterface model;
-    static ViewInterface view;
+    static AppView view;
 
 
-    public Presenter(ViewInterface view)
+    public Presenter(AppView view)
     {
         this.view = view;
         model = new Model();
@@ -55,7 +48,7 @@ public class Presenter implements PresenterInterface {
                 case MAIN_SCREEN_ID:
                     view.showInsectList();
                     break;
-                case PresenterInterface.DETAILS_SCREEN_ID:
+                case AppPresenter.DETAILS_SCREEN_ID:
                     view.showInsectDetails(showingInsect, insectImage);
                     break;
                 case QUIZ_SCREEN_ID:
@@ -162,7 +155,7 @@ public class Presenter implements PresenterInterface {
         Presenter.showingInsect = showingInsect;
     }
 
-    public static class ListPresenter implements PresenterInterface.ListPresenterInterface{
+    public static class ListPresenter implements AppPresenter.ListPresenterInterface{
 
         public ListPresenter() {
         }

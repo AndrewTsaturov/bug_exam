@@ -1,8 +1,6 @@
 package com.google.developer.bugmaster.view.fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.Menu;
@@ -11,8 +9,7 @@ import android.view.MenuItem;
 
 import com.google.developer.bugmaster.view.activity.MainActivity;
 import com.google.developer.bugmaster.R;
-import com.google.developer.bugmaster.presenters.Presenter;
-import com.google.developer.bugmaster.presenters.PresenterInterface;
+import com.google.developer.bugmaster.presenters.AppPresenter;
 
 /**
  * Created by Андрей on 19.09.2017.
@@ -20,7 +17,7 @@ import com.google.developer.bugmaster.presenters.PresenterInterface;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-    PresenterInterface presenter;
+    AppPresenter presenter;
 
 
     @Override
@@ -49,7 +46,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         setPreferencesFromResource(R.xml.preferences, rootKey);
     }
 
-    public void setPresenter(PresenterInterface presenter) {
+    public void setPresenter(AppPresenter presenter) {
         this.presenter = presenter;
     }
 }

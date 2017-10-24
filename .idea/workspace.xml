@@ -7,39 +7,25 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="710db099-b160-417d-871d-65888fb1ae87" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/views/AnswerView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/views/AppView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/views/DangerLevelView.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/activity/MainActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/Insect.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/pojo/Insect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/InsectImageLoader.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/data/InsectImageLoader.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/InsectsDbConsts.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/data/InsectsDbConsts.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/InsectsDbHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/data/InsectsDbHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/InsectsDbManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/data/InsectsDbManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/Question.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/pojo/Question.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/ui/InsectDetailsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/InsectDetailsFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/ui/InsectListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/InsectListFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/ui/QuizFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/QuizFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/ui/SettingsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/SettingsFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/views/InsectListViewHolder.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/adapters/InsectListViewHolder.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/views/InsectRecyclerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/adapters/InsectRecyclerAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/views/RecyclerViewInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/adapters/RecyclerViewInterface.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/views/ViewInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/ViewInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/repositories/AppRepository.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/PresenterInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/AppPresenter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/ViewInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/AppView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/AppBugMaster.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/AppBugMaster.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/Model.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/Model.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/ModelInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/ModelInterface.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/Presenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/Presenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/PresenterInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/PresenterInterface.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/reminders/ReminderService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/reminders/ReminderService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_insect_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_insect_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_quiz.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_quiz.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/insect_list_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/insect_list_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/activity/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/activity/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/adapters/InsectRecyclerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/adapters/InsectRecyclerAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/InsectDetailsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/InsectDetailsFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/InsectListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/InsectListFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/QuizFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/QuizFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/SettingsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/SettingsFragment.java" />
     </list>
     <ignored path="bug_exam.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,29 +72,27 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ModelInterface.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/ModelInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+            <state relative-caret-position="483">
+              <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BasePresenter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ModelInterface.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/ModelInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasePresenter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/base/BasePresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="51">
               <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
               <folding />
             </state>
@@ -118,16 +102,9 @@
       <file leaf-file-name="Presenter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/Presenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2295">
-              <caret line="156" column="45" selection-start-line="156" selection-start-column="45" selection-end-line="156" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1995#1996#0" expanded="true" />
-                <element signature="e#2027#2028#0" expanded="true" />
-                <element signature="e#3951#3952#0" expanded="true" />
-                <element signature="e#4610#4611#0" expanded="true" />
-                <element signature="e#4651#4652#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="306">
+              <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -135,19 +112,60 @@
       <file leaf-file-name="InsectDetailsFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/InsectDetailsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
+            <state relative-caret-position="816">
               <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PresenterInterface.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/PresenterInterface.java">
+      <file leaf-file-name="AppRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/repositories/AppRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+            <state relative-caret-position="245">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#575#576#0" expanded="true" />
+                <element signature="e#609#610#0" expanded="true" />
+                <element signature="e#674#675#0" expanded="true" />
+                <element signature="e#720#721#0" expanded="true" />
+                <element signature="e#760#761#0" expanded="true" />
+                <element signature="e#796#797#0" expanded="true" />
+                <element signature="e#854#855#0" expanded="true" />
+                <element signature="e#904#905#0" expanded="true" />
+                <element signature="e#949#950#0" expanded="true" />
+                <element signature="e#990#991#0" expanded="true" />
+                <element signature="e#1158#1159#0" expanded="true" />
+                <element signature="e#1192#1193#0" expanded="true" />
+                <element signature="e#1248#1249#0" expanded="true" />
+                <element signature="e#1294#1295#0" expanded="true" />
+                <element signature="e#1336#1337#0" expanded="true" />
+                <element signature="e#1377#1378#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/Model.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppBugMaster.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/AppBugMaster.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+              <folding>
+                <element signature="e#668#669#0" expanded="true" />
+                <element signature="e#701#702#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1669,7 +1687,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="C:\Git\bug_exam" value="4525966408052" />
+        <entry key="C:\Git\bug_exam" value="4526397288970" />
         <entry key="D:\AdroidProjects\GIT\bug_exam" value="4524710053705" />
       </map>
     </option>
@@ -2056,7 +2074,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/models/SQLiteConsts.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/models/DbManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/models/Insect.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/ModelInterface.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/BugsDbHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/Question.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/ImageLoader.java" />
@@ -2073,8 +2090,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/ui/SettingsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/reminders/ReminderService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/AppBugMaster.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/Model.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/views/InsectRecyclerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/views/ViewInterface.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/views/AppView.java" />
@@ -2093,8 +2108,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/QuizFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/SettingsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/PresenterInterface.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/Presenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/activity/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/base/BasePresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/AppBugMaster.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/Presenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/ModelInterface.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/repositories/AppRepository.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/Model.java" />
       </list>
     </option>
   </component>
@@ -2129,10 +2149,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView">
-        <subPane />
-      </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2209,6 +2226,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bug_exam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bug_exam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2281,11 +2324,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
+              <option name="myItemId" value="reminders" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2391,7 +2430,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
+              <option name="myItemId" value="repositories" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2425,14 +2464,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="base" />
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pojo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bug_exam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bug_exam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bugmaster" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2784,24 +2868,24 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977462" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5361803" sideWeight="0.50647247" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24199288" sideWeight="0.4935275" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31391585" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31877023" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2860,16 +2944,8 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/PresenterInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/adapters/InsectListViewHolder.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/ViewInterface.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/AppView.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/base/BasePresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -2897,13 +2973,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="534">
           <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/reminders/AlarmReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -3010,18 +3079,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/ViewInterface.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/AppView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/AppBugMaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -3068,14 +3129,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/adapters/InsectListViewHolder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3113,57 +3166,101 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/fragments/InsectDetailsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
+        <state relative-caret-position="816">
           <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/PresenterInterface.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+        <state relative-caret-position="483">
+          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/Presenter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/AppPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
-          <caret line="156" column="45" selection-start-line="156" selection-start-column="45" selection-end-line="156" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1995#1996#0" expanded="true" />
-            <element signature="e#2027#2028#0" expanded="true" />
-            <element signature="e#3951#3952#0" expanded="true" />
-            <element signature="e#4610#4611#0" expanded="true" />
-            <element signature="e#4651#4652#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="432">
+          <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/view/activity/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/reminders/AlarmReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/ModelInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+        <state relative-caret-position="68">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/base/BasePresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="51">
           <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/presenters/Presenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/AppBugMaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+          <folding>
+            <element signature="e#668#669#0" expanded="true" />
+            <element signature="e#701#702#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/repositories/AppRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#575#576#0" expanded="true" />
+            <element signature="e#609#610#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#796#797#0" expanded="true" />
+            <element signature="e#854#855#0" expanded="true" />
+            <element signature="e#904#905#0" expanded="true" />
+            <element signature="e#949#950#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1158#1159#0" expanded="true" />
+            <element signature="e#1192#1193#0" expanded="true" />
+            <element signature="e#1248#1249#0" expanded="true" />
+            <element signature="e#1294#1295#0" expanded="true" />
+            <element signature="e#1336#1337#0" expanded="true" />
+            <element signature="e#1377#1378#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/google/developer/bugmaster/model/ModelInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
           <folding />
         </state>
       </provider>

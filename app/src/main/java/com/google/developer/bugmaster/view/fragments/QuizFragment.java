@@ -15,8 +15,7 @@ import android.widget.TextView;
 import com.google.developer.bugmaster.view.activity.MainActivity;
 import com.google.developer.bugmaster.R;
 import com.google.developer.bugmaster.model.pojo.Question;
-import com.google.developer.bugmaster.presenters.Presenter;
-import com.google.developer.bugmaster.presenters.PresenterInterface;
+import com.google.developer.bugmaster.presenters.AppPresenter;
 import com.google.developer.bugmaster.view.custom.AnswerView;
 
 import butterknife.BindView;
@@ -37,7 +36,7 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
 
     Question question;
 
-    PresenterInterface presenter;
+    AppPresenter presenter;
 
 
 
@@ -116,11 +115,11 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
         this.question = question;
     }
 
-    public PresenterInterface getPresenter() {
+    public AppPresenter getPresenter() {
         return presenter;
     }
 
-    public void setPresenter(PresenterInterface presenter) {
+    public void setPresenter(AppPresenter presenter) {
         this.presenter = presenter;
     }
 }

@@ -14,9 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.developer.bugmaster.R;
-import com.google.developer.bugmaster.presenters.Presenter;
-import com.google.developer.bugmaster.presenters.PresenterInterface;
-import com.google.developer.bugmaster.view.activity.MainActivity;
+import com.google.developer.bugmaster.presenters.AppPresenter;
 import com.google.developer.bugmaster.view.adapters.InsectRecyclerAdapter;
 
 import butterknife.BindView;
@@ -31,7 +29,7 @@ public class InsectListFragment extends Fragment {
 
     private Unbinder unbinder;
 
-    PresenterInterface presenter;
+    AppPresenter presenter;
 
     @BindView(R.id.insect_list) RecyclerView insectListView;
 
@@ -98,11 +96,11 @@ public class InsectListFragment extends Fragment {
         quizLaunchFab.setOnClickListener(v -> presenter.onQuizFabClick());
     }
 
-    public PresenterInterface getPresenter() {
+    public AppPresenter getPresenter() {
         return presenter;
     }
 
-    public void setPresenter(PresenterInterface presenter) {
+    public void setPresenter(AppPresenter presenter) {
         this.presenter = presenter;
     }
 }

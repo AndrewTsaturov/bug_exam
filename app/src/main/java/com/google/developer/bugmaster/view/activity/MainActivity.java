@@ -3,23 +3,20 @@ package com.google.developer.bugmaster.view.activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.google.developer.bugmaster.R;
 import com.google.developer.bugmaster.model.pojo.Insect;
 import com.google.developer.bugmaster.model.pojo.Question;
 import com.google.developer.bugmaster.presenters.Presenter;
-import com.google.developer.bugmaster.presenters.PresenterInterface;
-import com.google.developer.bugmaster.view.ViewInterface;
+import com.google.developer.bugmaster.view.AppView;
 import com.google.developer.bugmaster.view.fragments.InsectDetailsFragment;
 import com.google.developer.bugmaster.view.fragments.InsectListFragment;
 import com.google.developer.bugmaster.view.fragments.QuizFragment;
 import com.google.developer.bugmaster.view.fragments.SettingsFragment;
 
 
-public class MainActivity extends AppCompatActivity implements ViewInterface {
+public class MainActivity extends AppCompatActivity implements AppView {
 
     Presenter presenter;
 

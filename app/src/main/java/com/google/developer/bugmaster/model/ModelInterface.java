@@ -12,9 +12,9 @@ import java.util.ArrayList;
  */
 
 public interface ModelInterface {
-    ArrayList<Insect> loadData();
+    void loadData();
 
-    Question createQuestion();
+    void createQuestion();
 
-    Bitmap loadInsectImage(String imageAsset);
+    void loadInsectImage(String imageAsset);
 }

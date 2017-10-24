@@ -6,7 +6,7 @@ import com.google.developer.bugmaster.view.adapters.InsectListViewHolder;
  * Created by Андрей on 17.10.2017.
  */
 
-public interface PresenterInterface {
+public interface AppPresenter {
 
     String INTENT_ALARM_RECIEVER_ACION = "com.google.developer.bugmaster.UPDATE_REMINDER";
     String INTENT_QUIZ_SCREEN_LAUNCH = "quiz launch key";

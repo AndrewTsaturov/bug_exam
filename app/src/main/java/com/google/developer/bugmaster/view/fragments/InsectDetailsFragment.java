@@ -19,8 +19,7 @@ import android.widget.TextView;
 import com.google.developer.bugmaster.view.activity.MainActivity;
 import com.google.developer.bugmaster.R;
 import com.google.developer.bugmaster.model.pojo.Insect;
-import com.google.developer.bugmaster.presenters.Presenter;
-import com.google.developer.bugmaster.presenters.PresenterInterface;
+import com.google.developer.bugmaster.presenters.AppPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,7 +39,7 @@ public class InsectDetailsFragment extends Fragment{
 
     private Unbinder unbinder;
 
-    PresenterInterface presenter;
+    AppPresenter presenter;
 
     private Insect insect;
 
@@ -116,11 +115,11 @@ public class InsectDetailsFragment extends Fragment{
         this.insectImage = insectImage;
     }
 
-    public PresenterInterface getPresenter() {
+    public AppPresenter getPresenter() {
         return presenter;
     }
 
-    public void setPresenter(PresenterInterface presenter) {
+    public void setPresenter(AppPresenter presenter) {
         this.presenter = presenter;
     }
 }
