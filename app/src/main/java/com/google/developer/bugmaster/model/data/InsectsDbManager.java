@@ -1,7 +1,9 @@
-package com.google.developer.bugmaster.model;
+package com.google.developer.bugmaster.model.data;
 
 import android.content.Context;
 import android.os.AsyncTask;
+
+import com.google.developer.bugmaster.model.pojo.Insect;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;

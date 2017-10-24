@@ -1,15 +1,14 @@
 package com.google.developer.bugmaster.presenters;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
-import com.google.developer.bugmaster.AppBugMaster;
-import com.google.developer.bugmaster.model.Insect;
+import com.google.developer.bugmaster.model.pojo.Insect;
 import com.google.developer.bugmaster.model.Model;
 import com.google.developer.bugmaster.model.ModelInterface;
-import com.google.developer.bugmaster.model.Question;
-import com.google.developer.bugmaster.views.AppView;
-import com.google.developer.bugmaster.views.InsectListViewHolder;
-import com.google.developer.bugmaster.views.ViewInterface;
+import com.google.developer.bugmaster.model.pojo.Question;
+import com.google.developer.bugmaster.view.adapters.InsectListViewHolder;
+import com.google.developer.bugmaster.view.ViewInterface;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,24 +18,31 @@ import java.util.Collections;
  */
 
 public class Presenter implements PresenterInterface {
-    byte screenID;
+    String TAG = "Presenter";
 
-    boolean isInsectListcompared;
+    private static byte screenID;
 
-    ArrayList<Insect> insectsList = new ArrayList<>();
+    private static int checkedPosition;
 
-    Insect showingInsect;
+    private boolean isInsectListcompared;
 
-    int quizViewChoozenAnswerIndex;
+    private static ArrayList<Insect> insectsList = new ArrayList<>();
 
-    Question quizQuestion;
+    public static Insect showingInsect;
 
-    Bitmap insectImage;
+    private static int quizViewChoozenAnswerIndex;
 
-    ModelInterface model;
-    ViewInterface view;
+    public Question quizQuestion;
 
-    public Presenter() {
+    public static Bitmap insectImage;
+
+    static ModelInterface model;
+    static ViewInterface view;
+
+
+    public Presenter(ViewInterface view)
+    {
+        this.view = view;
         model = new Model();
     }
 
@@ -45,10 +51,7 @@ public class Presenter implements PresenterInterface {
         if(insectsList.size() == 0)
         setInsectsList(model.loadData());
 
-        view = new AppView();
-        view.showInsectList();
-
-            switch (screenID){
+            switch (getScreenID()){
                 case MAIN_SCREEN_ID:
                     view.showInsectList();
                     break;
@@ -70,7 +73,7 @@ public class Presenter implements PresenterInterface {
 
     @Override
     public void onDetach() {
-        view = null;
+        this.view = null;
     }
 
     @Override
@@ -79,17 +82,20 @@ public class Presenter implements PresenterInterface {
             Collections.sort(insectsList, new Insect.DangerLevelComparator());
 
             setInsectListcompared(false);
+
         }
         else {
             Collections.sort(insectsList, new Insect.CommonNameComparator());
 
             setInsectListcompared(true);
         }
+
+        view.showInsectList();
     }
 
     @Override
     public void onSettingsMenuItemClick() {
-        setScreenID(SETTINGS_SCREEN_ID);
+        screenID = DETAILS_SCREEN_ID;
 
         view.showSettings();
     }
@@ -100,7 +106,7 @@ public class Presenter implements PresenterInterface {
 
         quizQuestion = model.createQuestion();
 
-        setScreenID(QUIZ_SCREEN_ID);
+        screenID = DETAILS_SCREEN_ID;
 
         view.showQuiz(quizQuestion);
     }
@@ -110,7 +116,7 @@ public class Presenter implements PresenterInterface {
         if(screenID != MAIN_SCREEN_ID){
             view.showInsectList();
 
-            setScreenID(MAIN_SCREEN_ID);
+            screenID = MAIN_SCREEN_ID;
         }
         else {
             view.stopView();
@@ -132,13 +138,44 @@ public class Presenter implements PresenterInterface {
         return screenID;
     }
 
-    @Override
+    public void setInsectsList(ArrayList<Insect> insectsList) {
+        this.insectsList = insectsList;
+    }
+
+    public void setInsectListcompared(boolean insectListcompared) {
+        isInsectListcompared = insectListcompared;
+    }
+
+    public int getQuizViewChoozenAnswerIndex() {
+        return quizViewChoozenAnswerIndex;
+    }
+
+    public void setQuizViewChoozenAnswerIndex(int quizViewChoozenAnswerIndex) {
+        this.quizViewChoozenAnswerIndex = quizViewChoozenAnswerIndex;
+    }
+
+    public static Insect getShowingInsect() {
+        return showingInsect;
+    }
+
+    public static void setShowingInsect(Insect showingInsect) {
+        Presenter.showingInsect = showingInsect;
+    }
+
+    public static class ListPresenter implements PresenterInterface.ListPresenterInterface{
+
+        public ListPresenter() {
+        }
+
+            @Override
     public void onInsectListItemClick(int position) {
+        checkedPosition = position;
+
         showingInsect = insectsList.get(position);
 
         insectImage = model.loadInsectImage(showingInsect.getImageAsset());
 
-        setScreenID(DETAILS_SCREEN_ID);
+        screenID = DETAILS_SCREEN_ID;
 
         view.showInsectDetails(showingInsect, insectImage);
     }
@@ -155,23 +192,5 @@ public class Presenter implements PresenterInterface {
         holder.setScientificName(insectsList.get(position).getScientificName());
     }
 
-    public void setInsectsList(ArrayList<Insect> insectsList) {
-        this.insectsList = insectsList;
-    }
-
-    public void setInsectListcompared(boolean insectListcompared) {
-        isInsectListcompared = insectListcompared;
-    }
-
-    public void setScreenID(byte screenID) {
-        this.screenID = screenID;
-    }
-
-    public int getQuizViewChoozenAnswerIndex() {
-        return quizViewChoozenAnswerIndex;
-    }
-
-    public void setQuizViewChoozenAnswerIndex(int quizViewChoozenAnswerIndex) {
-        this.quizViewChoozenAnswerIndex = quizViewChoozenAnswerIndex;
     }
 }

@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster.views;
+package com.google.developer.bugmaster.view.adapters;
 
 /**
  * Created by Андрей on 18.10.2017.

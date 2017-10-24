@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster.ui;
+package com.google.developer.bugmaster.view.fragments;
 
 
 import android.graphics.Bitmap;
@@ -16,9 +16,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.developer.bugmaster.MainActivity;
+import com.google.developer.bugmaster.view.activity.MainActivity;
 import com.google.developer.bugmaster.R;
-import com.google.developer.bugmaster.model.Insect;
+import com.google.developer.bugmaster.model.pojo.Insect;
 import com.google.developer.bugmaster.presenters.Presenter;
 import com.google.developer.bugmaster.presenters.PresenterInterface;
 
@@ -46,11 +46,8 @@ public class InsectDetailsFragment extends Fragment{
 
     Bitmap insectImage;
 
-    public InsectDetailsFragment() {
-        presenter = new Presenter();
-    }
-
     //native Fragment callbacks
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -117,5 +114,13 @@ public class InsectDetailsFragment extends Fragment{
 
     public void setInsectImage(Bitmap insectImage) {
         this.insectImage = insectImage;
+    }
+
+    public PresenterInterface getPresenter() {
+        return presenter;
+    }
+
+    public void setPresenter(PresenterInterface presenter) {
+        this.presenter = presenter;
     }
 }

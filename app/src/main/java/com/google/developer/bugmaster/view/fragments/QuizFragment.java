@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster.ui;
+package com.google.developer.bugmaster.view.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,13 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.developer.bugmaster.AppBugMaster;
-import com.google.developer.bugmaster.MainActivity;
+import com.google.developer.bugmaster.view.activity.MainActivity;
 import com.google.developer.bugmaster.R;
-import com.google.developer.bugmaster.model.Question;
+import com.google.developer.bugmaster.model.pojo.Question;
 import com.google.developer.bugmaster.presenters.Presenter;
 import com.google.developer.bugmaster.presenters.PresenterInterface;
-import com.google.developer.bugmaster.views.AnswerView;
+import com.google.developer.bugmaster.view.custom.AnswerView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,14 +40,6 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
     PresenterInterface presenter;
 
 
-    public QuizFragment() {
-       presenter = new Presenter();
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -123,5 +114,13 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
 
     public void setQuestion(Question question) {
         this.question = question;
+    }
+
+    public PresenterInterface getPresenter() {
+        return presenter;
+    }
+
+    public void setPresenter(PresenterInterface presenter) {
+        this.presenter = presenter;
     }
 }

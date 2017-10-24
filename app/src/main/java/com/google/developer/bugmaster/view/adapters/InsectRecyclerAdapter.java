@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster.views;
+package com.google.developer.bugmaster.view.adapters;
 
 
 import android.support.v7.widget.RecyclerView;
@@ -18,11 +18,6 @@ import com.google.developer.bugmaster.presenters.PresenterInterface;
 public class InsectRecyclerAdapter extends
         RecyclerView.Adapter<InsectListViewHolder> {
 
-    private PresenterInterface presenter = new Presenter();
-
-    public InsectRecyclerAdapter() {
-
-    }
 
     @Override
     public InsectListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -35,12 +30,14 @@ public class InsectRecyclerAdapter extends
 
     @Override
     public void onBindViewHolder(InsectListViewHolder holder, int position) {
-      presenter.onBindInsectListViewHolder(holder, position);
+      new Presenter.ListPresenter().onBindInsectListViewHolder(holder, position);
     }
 
     @Override
     public int getItemCount() {
-        return presenter.getInsectsListCount();
+        int count = new Presenter.ListPresenter().getInsectsListCount();
+
+        return count;
     }
 
 }

@@ -1,6 +1,6 @@
 package com.google.developer.bugmaster.presenters;
 
-import com.google.developer.bugmaster.views.InsectListViewHolder;
+import com.google.developer.bugmaster.view.adapters.InsectListViewHolder;
 
 /**
  * Created by Андрей on 17.10.2017.
@@ -17,6 +17,7 @@ public interface PresenterInterface {
     byte SETTINGS_SCREEN_ID = 4;
 
     int CHOSEN_ANSWER_INDEX_DEFAULT = -1;
+
 
     void onAttach();
 
@@ -36,11 +37,15 @@ public interface PresenterInterface {
 
     byte getScreenID();
 
+    interface ListPresenterInterface {
+
     void onInsectListItemClick(int position);
 
     int getInsectsListCount();
 
     void onBindInsectListViewHolder(InsectListViewHolder holder, int position);
+
+    }
 
 //    void onBindInsectListRecyclerView(int position, InsectListViewHolder holder);
 

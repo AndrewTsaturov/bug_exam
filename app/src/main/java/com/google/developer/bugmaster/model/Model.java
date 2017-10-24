@@ -1,9 +1,12 @@
 package com.google.developer.bugmaster.model;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 
 import com.google.developer.bugmaster.AppBugMaster;
+import com.google.developer.bugmaster.model.data.InsectImageLoader;
+import com.google.developer.bugmaster.model.data.InsectsDbManager;
+import com.google.developer.bugmaster.model.pojo.Insect;
+import com.google.developer.bugmaster.model.pojo.Question;
 
 import java.util.ArrayList;
 
@@ -13,16 +16,14 @@ import java.util.ArrayList;
 
 public class Model implements ModelInterface{
 
-    private InsectsDbManager dbManager;
-    private InsectImageLoader imageLoader;
 
     public Model() {
-     dbManager = new InsectsDbManager(AppBugMaster.getContext());
-        imageLoader = new InsectImageLoader(AppBugMaster.getContext());
+
     }
 
     @Override
     public ArrayList<Insect> loadData() {
+        InsectsDbManager dbManager = new InsectsDbManager(AppBugMaster.getContext());
         return dbManager.loadInsects();
     }
 
@@ -36,6 +37,7 @@ public class Model implements ModelInterface{
 
     @Override
     public Bitmap loadInsectImage(String imageAsset) {
+        InsectImageLoader imageLoader = new InsectImageLoader(AppBugMaster.getContext());
         return imageLoader.loadImage(imageAsset);
     }
 

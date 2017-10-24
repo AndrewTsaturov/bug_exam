@@ -3,15 +3,6 @@ package com.google.developer.bugmaster;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
-
-import com.google.developer.bugmaster.model.Insect;
-import com.google.developer.bugmaster.model.InsectsDbManager;
-import com.google.developer.bugmaster.reminders.AlarmReceiver;
-import com.google.developer.bugmaster.model.Question;
-
-import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by Дом on 04.10.2017.

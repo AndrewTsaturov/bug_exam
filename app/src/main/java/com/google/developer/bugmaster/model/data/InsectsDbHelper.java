@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster.model;
+package com.google.developer.bugmaster.model.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.google.developer.bugmaster.R;
+import com.google.developer.bugmaster.model.pojo.Insect;
 
 import org.json.JSONArray;
 import org.json.JSONException;

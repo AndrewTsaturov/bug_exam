@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster.model;
+package com.google.developer.bugmaster.model.pojo;
 
 
 import java.util.Comparator;

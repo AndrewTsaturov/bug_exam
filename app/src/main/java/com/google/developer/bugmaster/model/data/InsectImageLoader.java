@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster.model;
+package com.google.developer.bugmaster.model.data;
 
 import android.app.Activity;
 import android.content.Context;

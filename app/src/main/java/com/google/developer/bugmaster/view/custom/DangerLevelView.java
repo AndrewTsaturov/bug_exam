@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster.views;
+package com.google.developer.bugmaster.view.custom;
 
 import android.content.Context;
 import android.content.res.TypedArray;

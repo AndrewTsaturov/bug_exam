@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster.ui;
+package com.google.developer.bugmaster.view.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +16,8 @@ import android.view.ViewGroup;
 import com.google.developer.bugmaster.R;
 import com.google.developer.bugmaster.presenters.Presenter;
 import com.google.developer.bugmaster.presenters.PresenterInterface;
-import com.google.developer.bugmaster.views.InsectRecyclerAdapter;
+import com.google.developer.bugmaster.view.activity.MainActivity;
+import com.google.developer.bugmaster.view.adapters.InsectRecyclerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,16 +37,9 @@ public class InsectListFragment extends Fragment {
 
     @BindView(R.id.list_fab) FloatingActionButton quizLaunchFab;
 
-    public InsectListFragment() {
-        presenter = new Presenter();
-    }
 
     //native Fragment callbacks -->
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -104,8 +98,11 @@ public class InsectListFragment extends Fragment {
         quizLaunchFab.setOnClickListener(v -> presenter.onQuizFabClick());
     }
 
-    //insect list position getter
+    public PresenterInterface getPresenter() {
+        return presenter;
+    }
 
-
-
+    public void setPresenter(PresenterInterface presenter) {
+        this.presenter = presenter;
+    }
 }

@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.google.developer.bugmaster.MainActivity;
+import com.google.developer.bugmaster.view.activity.MainActivity;
 import com.google.developer.bugmaster.R;
 import com.google.developer.bugmaster.presenters.PresenterInterface;
 

@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster.model;
+package com.google.developer.bugmaster.model.data;
 
 /**
  * Created by Андрей on 19.09.2017.

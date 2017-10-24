@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.google.developer.bugmaster.MainActivity">
+    tools:context="com.google.developer.bugmaster.view.activity.MainActivity">
 
 
     <android.support.v7.widget.RecyclerView

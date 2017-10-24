@@ -1,7 +1,5 @@
-package com.google.developer.bugmaster.model;
+package com.google.developer.bugmaster.model.pojo;
 
-
-import com.google.developer.bugmaster.model.Insect;
 
 import java.util.ArrayList;
 import java.util.Collections;
