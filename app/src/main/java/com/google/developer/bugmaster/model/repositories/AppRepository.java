@@ -11,7 +11,8 @@ import java.util.ArrayList;
 /**
  * Created by Дом on 24.10.2017.
  */
-
+//TODO: класс для хранения данных для работы приложения: интересует можно ли его сделать сингтоном?
+    //// TODO: или таки его надо использовать через введение зависоимоти или даггер?
 public class AppRepository {
     ArrayList<Insect> insectsList;
 

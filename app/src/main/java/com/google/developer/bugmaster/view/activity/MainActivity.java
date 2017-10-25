@@ -2,8 +2,8 @@ package com.google.developer.bugmaster.view.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-
 import android.support.v7.app.AppCompatActivity;
+
 
 import com.google.developer.bugmaster.R;
 import com.google.developer.bugmaster.model.pojo.Insect;
@@ -16,6 +16,7 @@ import com.google.developer.bugmaster.view.fragments.QuizFragment;
 import com.google.developer.bugmaster.view.fragments.SettingsFragment;
 
 
+//Fixme: можно ли реализовывать вью в активити?
 public class MainActivity extends AppCompatActivity implements AppView {
 
     Presenter presenter;
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements AppView {
 
     @Override
         public void stopView() {
-
+          //TODO реализовать отвязку вью
         }
 
 }

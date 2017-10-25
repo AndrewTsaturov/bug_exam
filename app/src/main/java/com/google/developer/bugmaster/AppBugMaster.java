@@ -9,23 +9,26 @@ import com.google.developer.bugmaster.model.repositories.AppRepository;
 /**
  * Created by Дом on 04.10.2017.
  */
-
+//TODO: вчера серьезно пытался передлать проект с добавлением репозитория, старый презентер отчистил он был негоден
+    //TODO интересует как правильно использовать оьект repository;
 public class AppBugMaster extends Application {
 
     private static String ALARM_RECIEVER_ACION = "com.google.developer.bugmaster.UPDATE_REMINDER";
 
     public static AppRepository repository;
 
+
+
     @Override
     public void onCreate() {
         super.onCreate();
         repository = new AppRepository();
-        repository.setContext(getApplicationContext());
     }
 
     public static AppRepository getRepository() {
         return repository;
     }
+
 
     //Todo перенести броадкаст в презентер
     public void sendReminderBradcast(){
