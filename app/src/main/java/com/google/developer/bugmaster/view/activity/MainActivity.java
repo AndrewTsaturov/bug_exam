@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 
 
 import com.google.developer.bugmaster.R;
+import com.google.developer.bugmaster.model.AppBugMaster;
 import com.google.developer.bugmaster.model.pojo.Insect;
 import com.google.developer.bugmaster.model.pojo.Question;
+import com.google.developer.bugmaster.presenters.AppPresenter;
 import com.google.developer.bugmaster.presenters.Presenter;
 import com.google.developer.bugmaster.view.AppView;
 import com.google.developer.bugmaster.view.fragments.InsectDetailsFragment;
@@ -19,14 +21,17 @@ import com.google.developer.bugmaster.view.fragments.SettingsFragment;
 //Fixme: можно ли реализовывать вью в активити?
 public class MainActivity extends AppCompatActivity implements AppView {
 
-    Presenter presenter;
+    AppPresenter presenter;
+
+    AppBugMaster ap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ap = (AppBugMaster) getApplicationContext();
 
-            presenter = new Presenter(this);
+            presenter = new Presenter(ap.getModel(), this);
 
         presenter.onAttach();
     }
@@ -92,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements AppView {
 
     @Override
         public void stopView() {
-          //TODO реализовать отвязку вью
+          this.finish();
         }
 
 }

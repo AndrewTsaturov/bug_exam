@@ -35,17 +35,12 @@ public interface AppPresenter {
 
     int getChoosenAnswerIndex();
 
-    byte getScreenID();
-
-    interface ListPresenterInterface {
-
     void onInsectListItemClick(int position);
 
     int getInsectsListCount();
 
     void onBindInsectListViewHolder(InsectListViewHolder holder, int position);
 
-    }
 
 //    void onBindInsectListRecyclerView(int position, InsectListViewHolder holder);
 

@@ -87,17 +87,13 @@ public class InsectListFragment extends Fragment {
     }
 
     private void setupView(){
-        InsectRecyclerAdapter recyclerAdapter = new InsectRecyclerAdapter();
+        InsectRecyclerAdapter recyclerAdapter = new InsectRecyclerAdapter(presenter);
 
         insectListView.setLayoutManager(new LinearLayoutManager(getContext()));
         insectListView.setAdapter(recyclerAdapter);
 
 
         quizLaunchFab.setOnClickListener(v -> presenter.onQuizFabClick());
-    }
-
-    public AppPresenter getPresenter() {
-        return presenter;
     }
 
     public void setPresenter(AppPresenter presenter) {

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 //TODO: класс для хранения данных для работы приложения: интересует можно ли его сделать сингтоном?
     //// TODO: или таки его надо использовать через введение зависоимоти или даггер?
 public class AppRepository {
+    Context context;
+
     ArrayList<Insect> insectsList;
 
     Insect showingInsect;
@@ -24,7 +26,16 @@ public class AppRepository {
 
     int selectedQuizAnswer;
 
-    public AppRepository() {
+    public AppRepository(Context context) {
+        this.context = context;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 
     public ArrayList<Insect> getInsectsList() {

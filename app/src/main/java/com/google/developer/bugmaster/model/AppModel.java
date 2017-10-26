@@ -11,10 +11,26 @@ import java.util.ArrayList;
  * Created by Андрей on 17.10.2017.
  */
 
-public interface ModelInterface {
+public interface AppModel {
     void loadData();
 
     void createQuestion();
 
     void loadInsectImage(String imageAsset);
+
+    void setShowingInsect(int position);
+
+    void setSelectedQuizAnswer(int selectedQuizAnswer);
+
+    void sortList(boolean comparingFlag);
+
+    ArrayList<Insect> getInsectList();
+
+    Question getQuestion();
+
+    Insect getShowingInsect();
+
+    Bitmap getInsectImage();
+
+    int getSelectedQuizAnswer();
 }

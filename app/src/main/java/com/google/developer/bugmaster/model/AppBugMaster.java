@@ -1,4 +1,4 @@
-package com.google.developer.bugmaster;
+package com.google.developer.bugmaster.model;
 
 import android.app.Application;
 import android.content.Context;
@@ -15,20 +15,26 @@ public class AppBugMaster extends Application {
 
     private static String ALARM_RECIEVER_ACION = "com.google.developer.bugmaster.UPDATE_REMINDER";
 
-    public static AppRepository repository;
+    private AppRepository repository;
 
-
+    public AppModel model;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        repository = new AppRepository();
+        repository = new AppRepository(getApplicationContext());
+
+        model =  new Model(repository);
+        model.loadData();
     }
 
-    public static AppRepository getRepository() {
-        return repository;
+    public AppModel getModel() {
+        return model;
     }
 
+    public void setModel(AppModel model) {
+        this.model = model;
+    }
 
     //Todo перенести броадкаст в презентер
     public void sendReminderBradcast(){

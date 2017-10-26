@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.developer.bugmaster.R;
+import com.google.developer.bugmaster.presenters.AppPresenter;
 import com.google.developer.bugmaster.presenters.Presenter;
 import com.google.developer.bugmaster.view.custom.DangerLevelView;
 
@@ -22,12 +23,12 @@ public class InsectListViewHolder extends RecyclerView.ViewHolder implements Rec
     @BindView(R.id.item_txt_common_name) TextView commonNameTextViev;
     @BindView(R.id.item_txt_scient_name) TextView scientNameTextView;
 
-    public InsectListViewHolder(View itemView) {
+    public InsectListViewHolder(View itemView, AppPresenter presenter) {
         super(itemView);
 
         ButterKnife.bind(this, itemView);
 
-        itemView.setOnClickListener(v -> new Presenter.ListPresenter().onInsectListItemClick(getAdapterPosition()));
+        itemView.setOnClickListener(v -> presenter.onInsectListItemClick(getAdapterPosition()));
     }
 
     @Override
