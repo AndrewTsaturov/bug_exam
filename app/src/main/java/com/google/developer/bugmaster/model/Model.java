@@ -1,6 +1,8 @@
 package com.google.developer.bugmaster.model;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.google.developer.bugmaster.model.data.InsectImageLoader;
 import com.google.developer.bugmaster.model.data.InsectsDbManager;
@@ -14,7 +16,7 @@ import java.util.Collections;
 /**
  * Created by Андрей on 17.10.2017.
  */
-//TODO: я полностю переопределю модель после того как ты скажешь мне как правильно хранить данные в репозиториях
+//TODO: в последсии скорее всего в проект будет доблен DAGGGER2/ручной DI
 
 public class Model implements AppModel {
 
@@ -42,6 +44,8 @@ public class Model implements AppModel {
         quizQuestion.prepareQuestion(appRepository.getInsectsList());
 
         appRepository.setQuizQestion(quizQuestion);
+
+        setSelectedQuizAnswer(CHOSEN_ANSWER_INDEX_DEFAULT);
     }
 
     @Override
@@ -68,6 +72,16 @@ public class Model implements AppModel {
     }
 
     @Override
+    public void sendSettingsChangedBroadCast() {
+        Intent intent = new Intent();
+        intent.setAction(ALARM_RECIEVER_ACION);
+        intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+
+        appRepository.getContext().sendBroadcast(intent);
+        Log.d("MODEL", "intent sent");
+    }
+
+    @Override
     public ArrayList<Insect> getInsectList() {
         return appRepository.getInsectsList();
     }
@@ -91,8 +105,4 @@ public class Model implements AppModel {
     public int getSelectedQuizAnswer() {
         return appRepository.getSelectedQuizAnswer();
     }
-
-//Fixme: переопределить после решения вопроса по хранению данных
-
-
 }

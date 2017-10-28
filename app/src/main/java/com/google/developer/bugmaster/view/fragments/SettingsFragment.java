@@ -19,6 +19,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     AppPresenter presenter;
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

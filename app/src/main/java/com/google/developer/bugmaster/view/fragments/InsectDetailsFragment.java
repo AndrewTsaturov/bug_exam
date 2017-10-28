@@ -41,10 +41,6 @@ public class InsectDetailsFragment extends Fragment{
 
     AppPresenter presenter;
 
-    private Insect insect;
-
-    Bitmap insectImage;
-
     //native Fragment callbacks
 
 
@@ -95,28 +91,15 @@ public class InsectDetailsFragment extends Fragment{
     // setup views
 
     private void setupView(){
+        Insect insect = presenter.getShowingInsect();
          commonNameTxtView.setText(insect.getName());
          scientNameTxtView.setText(insect.getScientificName());
          classificationTextView.setText(getString(R.string.classification) + " " + insect.getClassification());
 
          dangerRatingView.setProgress(insect.getDangerLevel());
 
-        insectImageView.setImageBitmap(insectImage);
+        insectImageView.setImageBitmap(presenter.qetInsectImage());
 
-    }
-
-    //setters
-
-    public void setInsect(Insect insect) {
-        this.insect = insect;
-    }
-
-    public void setInsectImage(Bitmap insectImage) {
-        this.insectImage = insectImage;
-    }
-
-    public AppPresenter getPresenter() {
-        return presenter;
     }
 
     public void setPresenter(AppPresenter presenter) {

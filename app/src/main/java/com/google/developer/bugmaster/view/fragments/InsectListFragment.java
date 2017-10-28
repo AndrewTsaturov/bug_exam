@@ -31,11 +31,11 @@ public class InsectListFragment extends Fragment {
 
     AppPresenter presenter;
 
+    InsectRecyclerAdapter adapter;
+
     @BindView(R.id.insect_list) RecyclerView insectListView;
 
     @BindView(R.id.list_fab) FloatingActionButton quizLaunchFab;
-
-
     //native Fragment callbacks -->
 
 
@@ -87,10 +87,9 @@ public class InsectListFragment extends Fragment {
     }
 
     private void setupView(){
-        InsectRecyclerAdapter recyclerAdapter = new InsectRecyclerAdapter(presenter);
 
         insectListView.setLayoutManager(new LinearLayoutManager(getContext()));
-        insectListView.setAdapter(recyclerAdapter);
+        insectListView.setAdapter(adapter);
 
 
         quizLaunchFab.setOnClickListener(v -> presenter.onQuizFabClick());
@@ -98,5 +97,9 @@ public class InsectListFragment extends Fragment {
 
     public void setPresenter(AppPresenter presenter) {
         this.presenter = presenter;
+    }
+
+    public void setAdapter(InsectRecyclerAdapter adapter) {
+        this.adapter = adapter;
     }
 }

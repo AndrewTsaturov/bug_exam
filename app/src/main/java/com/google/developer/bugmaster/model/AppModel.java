@@ -12,6 +12,10 @@ import java.util.ArrayList;
  */
 
 public interface AppModel {
+   String ALARM_RECIEVER_ACION = "com.google.developer.bugmaster.UPDATE_REMINDER";
+
+    int CHOSEN_ANSWER_INDEX_DEFAULT = -1;
+
     void loadData();
 
     void createQuestion();
@@ -23,6 +27,8 @@ public interface AppModel {
     void setSelectedQuizAnswer(int selectedQuizAnswer);
 
     void sortList(boolean comparingFlag);
+
+    void sendSettingsChangedBroadCast();
 
     ArrayList<Insect> getInsectList();
 

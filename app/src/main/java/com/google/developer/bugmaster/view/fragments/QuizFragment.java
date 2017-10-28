@@ -34,8 +34,6 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
 
     Unbinder unbinder;
 
-    Question question;
-
     AppPresenter presenter;
 
 
@@ -100,6 +98,7 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
     }
 
     public void setupView(){
+        Question question = presenter.qetQuizQuestion();
         questionTextView.setText(getString(R.string.question_text) + question.getQuestionSubject());
 
         answerView.setOnAnswerSelectedListener(this);
@@ -110,14 +109,6 @@ public class QuizFragment extends Fragment implements AnswerView.OnAnswerSelecte
             answerView.setCheckedIndex(presenter.getChoosenAnswerIndex());
     }
 
-
-    public void setQuestion(Question question) {
-        this.question = question;
-    }
-
-    public AppPresenter getPresenter() {
-        return presenter;
-    }
 
     public void setPresenter(AppPresenter presenter) {
         this.presenter = presenter;

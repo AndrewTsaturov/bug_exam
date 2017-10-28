@@ -1,5 +1,9 @@
 package com.google.developer.bugmaster.presenters;
 
+import android.graphics.Bitmap;
+
+import com.google.developer.bugmaster.model.pojo.Insect;
+import com.google.developer.bugmaster.model.pojo.Question;
 import com.google.developer.bugmaster.view.adapters.InsectListViewHolder;
 
 /**
@@ -10,11 +14,6 @@ public interface AppPresenter {
 
     String INTENT_ALARM_RECIEVER_ACION = "com.google.developer.bugmaster.UPDATE_REMINDER";
     String INTENT_QUIZ_SCREEN_LAUNCH = "quiz launch key";
-
-    byte MAIN_SCREEN_ID = 1;
-    byte DETAILS_SCREEN_ID = 2;
-    byte QUIZ_SCREEN_ID = 3;
-    byte SETTINGS_SCREEN_ID = 4;
 
     int CHOSEN_ANSWER_INDEX_DEFAULT = -1;
 
@@ -41,7 +40,8 @@ public interface AppPresenter {
 
     void onBindInsectListViewHolder(InsectListViewHolder holder, int position);
 
-
-//    void onBindInsectListRecyclerView(int position, InsectListViewHolder holder);
+    Insect getShowingInsect();
+    Bitmap qetInsectImage();
+    Question qetQuizQuestion();
 
 }

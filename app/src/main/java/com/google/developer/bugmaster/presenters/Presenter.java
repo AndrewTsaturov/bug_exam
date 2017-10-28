@@ -1,17 +1,24 @@
 package com.google.developer.bugmaster.presenters;
 
+import android.graphics.Bitmap;
+import android.util.Log;
+
 import com.google.developer.bugmaster.model.AppModel;
+import com.google.developer.bugmaster.model.pojo.Insect;
+import com.google.developer.bugmaster.model.pojo.Question;
 import com.google.developer.bugmaster.view.AppView;
 import com.google.developer.bugmaster.view.adapters.InsectListViewHolder;
+
+import static com.google.developer.bugmaster.view.AppView.DETAILS_SCREEN_ID;
+import static com.google.developer.bugmaster.view.AppView.MAIN_SCREEN_ID;
+import static com.google.developer.bugmaster.view.AppView.QUIZ_SCREEN_ID;
+import static com.google.developer.bugmaster.view.AppView.SETTINGS_SCREEN_ID;
 
 /**
  * Created by Андрей on 18.10.2017.
  */
-//TODO: старый презентер не годен, я перереализую его после того как решим вопрос с репозиторием
-    //TODO: переписать используя джененрики?
 public class Presenter implements AppPresenter {
 
-    private static byte screenID;
 
     private boolean isInsectListcompared;
 
@@ -25,17 +32,18 @@ public class Presenter implements AppPresenter {
 
     @Override
     public void onAttach() {
-        switch (screenID){
+        Log.d("Pres", "" + view.getScreenId());
+        switch (view.getScreenId()) {
             case MAIN_SCREEN_ID:
                 view.showInsectList();
                 break;
 
             case DETAILS_SCREEN_ID:
-                view.showInsectDetails(model.getShowingInsect(), model.getInsectImage());
+                view.showInsectDetails();
                 break;
 
             case QUIZ_SCREEN_ID:
-                view.showQuiz(model.getQuestion());
+                view.showQuiz();
                 break;
 
             case SETTINGS_SCREEN_ID:
@@ -50,20 +58,20 @@ public class Presenter implements AppPresenter {
 
     @Override
     public void onDetach() {
-        //FIXME не нужен пока что
+        view = null;
     }
 
     @Override
     public void onSortMenuItemClick() {
-        if(isInsectListcompared){
-       model.sortList(isInsectListcompared);
-        isInsectListcompared = false;
-        }
-        else {
+        if (isInsectListcompared) {
+            model.sortList(isInsectListcompared);
+            isInsectListcompared = false;
+        } else {
             model.sortList(isInsectListcompared);
             isInsectListcompared = true;
         }
 
+        view.showInsectList();
     }
 
     @Override
@@ -75,15 +83,23 @@ public class Presenter implements AppPresenter {
     public void onQuizFabClick() {
         model.createQuestion();
 
-        view.showQuiz(model.getQuestion());
+        view.showQuiz();
     }
 
     @Override
     public void onBackButtonClick() {
-        if(screenID == MAIN_SCREEN_ID)
-            view.stopView();
-        else
-            view.showInsectList();
+        switch (view.getScreenId()){
+            case MAIN_SCREEN_ID:
+                view.stopView();
+                break;
+            case SETTINGS_SCREEN_ID:
+                model.sendSettingsChangedBroadCast();
+                view.showInsectList();
+                break;
+            default:
+                view.showInsectList();
+                break;
+        }
     }
 
     @Override
@@ -101,7 +117,7 @@ public class Presenter implements AppPresenter {
         model.setShowingInsect(position);
         model.loadInsectImage(model.getShowingInsect().getImageAsset());
 
-        view.showInsectDetails(model.getShowingInsect(), model.getInsectImage());
+        view.showInsectDetails();
     }
 
     @Override
@@ -115,4 +131,21 @@ public class Presenter implements AppPresenter {
         holder.setCommonName(model.getInsectList().get(position).getName());
         holder.setScientificName(model.getInsectList().get(position).getScientificName());
     }
+
+    @Override
+    public Insect getShowingInsect() {
+        return model.getShowingInsect();
+    }
+
+    @Override
+    public Bitmap qetInsectImage() {
+        return model.getInsectImage();
+    }
+
+    @Override
+    public Question qetQuizQuestion() {
+        return model.getQuestion();
+    }
+
 }
+
